@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const { getExcerpts } = require('../db/index.js');
+const { getOneExcerpt } = require('../db/index.js');
 
 const app = express();
 const port = 3000;
@@ -18,7 +18,7 @@ app.get('/excerpts/:title', (req, res) => {
       res.status(200).send(excerpt);
     }
   })
-})
+});
 
 
 

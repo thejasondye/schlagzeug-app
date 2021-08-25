@@ -4,11 +4,11 @@ import { Row, Col, Button, Image } from 'react-bootstrap';
 
 const MusicDisplay = (props) => {
 
-  const { title } = props;
+  const { currentMusic } = props;
 
   return (
     <Row style={{ height: "720px", overflow: "scroll" }}>
-      <Image src={ title } fluid />
+      <Image src={ currentMusic.url } fluid />
     </Row>
 
   )

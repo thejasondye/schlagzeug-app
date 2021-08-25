@@ -10,13 +10,12 @@ const App = (props) => {
 
   const [musicList, setMusitList] = useState(['music list item 1', 'music list item 2', 'music list item 3']);
   const [currentMusic, setCurrentMusic] = useState();
-  const [currentRecordings, setCurrentRecordings] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/getOneExcerpt/?title=Equinox')
+    axios.get('http://localhost:3000/excerpts/Equinox')
       .then((res) => {
-        setCurrentMusic(res.data.excerpt);
+        setCurrentMusic(res.data[0]);
         setIsLoading(false);
       })
       .catch((err) => {
@@ -27,7 +26,7 @@ const App = (props) => {
   if (isLoading) {
     return <h3> Loading ... </h3>;
   } else {
-
+    console.log(currentMusic.url);
     return (
       <Container>
 
@@ -47,9 +46,9 @@ const App = (props) => {
                 <Nav.Link href="#home">Home</Nav.Link>
                 <Nav.Link href="#link">Paths</Nav.Link>
                 <NavDropdown title="Resources" id="basic-nav-dropdown">
-                  <NavDropdown.Item href="#action/3.1">Percussion Fundamentals</NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.1">Funky Fundamentals</NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.2">How to use Schlagzeug!</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.3">Find a Teacher</NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.3">Message Your Teacher</NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item href="#action/3.4">Logout</NavDropdown.Item>
                 </NavDropdown>
@@ -64,7 +63,7 @@ const App = (props) => {
           </Col>
           <Col sm={9}>
             <Row>
-              <MusicDisplay title={currentMusic.title} />
+              <MusicDisplay currentMusic={currentMusic} />
             </Row>
             <Row>
               <AudioPlayer recordings={currentMusic.recordings} />

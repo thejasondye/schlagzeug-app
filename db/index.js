@@ -6,9 +6,9 @@ mongoose.connect('mongodb://localhost:27017/schlagzeug', { useNewUrlParser: true
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', () => 'we are connected!');
+db.once('open', () => console.log('db connected!'));
 
-const schlagzeugSchema = new mongoose.Schema({
+const excerptSchema = new mongoose.Schema({
   title: String,
   level: Number,
   instrument: String,
@@ -26,18 +26,18 @@ const schlagzeugSchema = new mongoose.Schema({
   ]
 });
 
-const Excerpt = mongoose.model('Schlagzeug', schlagzeugSchema);
+const Excerpt = mongoose.model('Excerpt', excerptSchema);
 
 // GET QUESTIONS
 async function getOneExcerpt(title, callback) {
   await Excerpt.find({ title: title }, (err, excerpt) => {
-      if (err) {
-        callback(err, null);
-      } else {
-        callback(null, excerpt);
-      }
-    });
-}
+    if (err) {
+      callback(err, null);
+    } else {
+      callback(null, excerpt);
+    }
+  })
+};
 
 // POST A QUESTION
 // async function postQuestion(postInfo, callback) {

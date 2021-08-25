@@ -1,26 +1,26 @@
 ,
-    "title": "Equinox",
+    "title": "MS Snare Studies Level 1A-1",
     "level": 2,
-    "instrument": "marimba",
-    "family": "keyboard",
+    "instrument": "snareDrum",
+    "family": "drums",
     "tempo": 109,
-    "url": "./lib/sheet_music/Equinox.png",
-    "style": "orchestral",
+    "url": "./lib/sheet_music/MS-Snare-Studies-Level-1A-1.png",
+    "style": "fundamental",
     "category": "solo",
     "recordings": [
       {
-        "title": "Equinox - Performance Tempo - 109",
-        "url": "./lib/recordings/Equinox.mp3",
-        "tempo": 109
+        "title": "MS Snare Studies Level 1A-1 - 112",
+        "url": "./lib/recordings/ms_snare_studies/MS-Snare-Studies-Level-1A-1-112.mp3",
+        "tempo": 112
       },
       {
-        "title": "Equinox - Practice Tempo - 96",
-        "url": "./lib/recordings/Equinox96.mp3",
-        "tempo": 96
+        "title": "MS Snare Studies Level 1A-1 - 100",
+        "url": "./lib/recordings/ms_snare_studies/MS-Snare-Studies-Level-1A-1-100.mp3",
+        "tempo": 100
       },
       {
-        "title": "Equinox - Practice Tempo - 88",
-        "url": "./lib/recordings/Equinox88.mp3",
+        "title": "MS Snare Studies Level 1A-1 - 88",
+        "url": "./lib/recordings/ms_snare_studies/MS-Snare-Studies-Level-1A-1-88.mp3",
         "tempo": 88
       }
     ]
