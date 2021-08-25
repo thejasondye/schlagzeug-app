@@ -4,14 +4,19 @@ import ReactAudioPlayer from 'react-audio-player';
 
 const AudioPlayer = (props) => {
 
+  const { recordings } = props;
 
   return (
     <Row style={{ height: "80px" }}>
-      <ReactAudioPlayer src="./lib/recordings/Equinox.mp3" controls={true} />
+      {recordings.map((recording) => {
+        return (
+          <div key={ recording.title }>
+            <ReactAudioPlayer src={ recording.url } controls={ true } />
+          </div>
+        )
+      })}
     </Row>
-
   )
-
 }
 
 export default AudioPlayer;

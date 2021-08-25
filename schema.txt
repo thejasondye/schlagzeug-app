@@ -1,0 +1,27 @@
+,
+    "title": "Equinox",
+    "level": 2,
+    "instrument": "marimba",
+    "family": "keyboard",
+    "tempo": 109,
+    "url": "./lib/sheet_music/Equinox.png",
+    "style": "orchestral",
+    "category": "solo",
+    "recordings": [
+      {
+        "title": "Equinox - Performance Tempo - 109",
+        "url": "./lib/recordings/Equinox.mp3",
+        "tempo": 109
+      },
+      {
+        "title": "Equinox - Practice Tempo - 96",
+        "url": "./lib/recordings/Equinox96.mp3",
+        "tempo": 96
+      },
+      {
+        "title": "Equinox - Practice Tempo - 88",
+        "url": "./lib/recordings/Equinox88.mp3",
+        "tempo": 88
+      }
+    ]
+}
