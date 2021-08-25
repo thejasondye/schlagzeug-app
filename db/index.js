@@ -16,7 +16,7 @@ const excerptSchema = new mongoose.Schema({
   tempo: Number,
   url: String,
   style: String,
-  category: Number,
+  category: String,
   recordings: [
     {
       title: String,
@@ -28,13 +28,24 @@ const excerptSchema = new mongoose.Schema({
 
 const Excerpt = mongoose.model('Excerpt', excerptSchema);
 
-// GET QUESTIONS
+// GET ONE EXCERPT
 async function getOneExcerpt(title, callback) {
   await Excerpt.find({ title: title }, (err, excerpt) => {
     if (err) {
       callback(err, null);
     } else {
       callback(null, excerpt);
+    }
+  })
+};
+
+// GET ALL EXCERPTS
+async function getAllExcerpts(callback) {
+  await Excerpt.find((err, excerpts) => {
+    if (err) {
+      callback(err, null);
+    } else {
+      callback(null, excerpts);
     }
   })
 };
@@ -68,4 +79,4 @@ async function getOneExcerpt(title, callback) {
 
 // export database methods
 module.exports.getOneExcerpt = getOneExcerpt;
-
+module.exports.getAllExcerpts = getAllExcerpts;

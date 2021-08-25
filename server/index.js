@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const { getOneExcerpt } = require('../db/index.js');
+const { getOneExcerpt, getAllExcerpts } = require('../db/index.js');
 
 const app = express();
 const port = 3000;
@@ -20,7 +20,15 @@ app.get('/excerpts/:title', (req, res) => {
   })
 });
 
-
+app.get('/excerpts/', (req, res) => {
+  getAllExcerpts((err, excerpts) => {
+    if (err) {
+      res.status(400).send(err);
+    } else {
+      res.status(200).send(excerpts);
+    }
+  })
+});
 
 
 app.listen(port, () => {

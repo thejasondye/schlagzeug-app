@@ -1,27 +1,27 @@
 ,
-    "title": "MS Snare Studies Level 1A-1",
-    "level": 2,
+    "title": "MS Snare Studies Level 1B-6",
+    "level": 1,
     "instrument": "snareDrum",
     "family": "drums",
-    "tempo": 109,
-    "url": "./lib/sheet_music/MS-Snare-Studies-Level-1A-1.png",
+    "tempo": 136,
+    "url": "./lib/sheet_music/MS-Snare-Studies-Level-1B-6.png",
     "style": "fundamental",
     "category": "solo",
     "recordings": [
       {
-        "title": "MS Snare Studies Level 1A-1 - 112",
-        "url": "./lib/recordings/ms_snare_studies/MS-Snare-Studies-Level-1A-1-112.mp3",
-        "tempo": 112
+        "title": "MS Snare Studies Level 1B-6 - 136",
+        "url": "./lib/recordings/ms_snare_studies/MS-Snare-Studies-Level-1B-6-136.mp3",
+        "tempo": 136
       },
       {
-        "title": "MS Snare Studies Level 1A-1 - 100",
-        "url": "./lib/recordings/ms_snare_studies/MS-Snare-Studies-Level-1A-1-100.mp3",
-        "tempo": 100
+        "title": "MS Snare Studies Level 1B-6 - 120",
+        "url": "./lib/recordings/ms_snare_studies/MS-Snare-Studies-Level-1B-6-120.mp3",
+        "tempo": 120
       },
       {
-        "title": "MS Snare Studies Level 1A-1 - 88",
-        "url": "./lib/recordings/ms_snare_studies/MS-Snare-Studies-Level-1A-1-88.mp3",
-        "tempo": 88
+        "title": "MS Snare Studies Level 1B-6 - 104",
+        "url": "./lib/recordings/ms_snare_studies/MS-Snare-Studies-Level-1B-6-104.mp3",
+        "tempo": 104
       }
     ]
 }

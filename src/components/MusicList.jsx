@@ -8,13 +8,13 @@ const MusicList = (props) => {
 
   return (
     <React.Fragment>
-      <Row>
-        // MUSIC LIST GOES HERE
+      <Row className="musicListTitle">
+        In this collection:
       </Row>
       <Row id="music-list" style={{height: "800px", overflow: "scroll"}} >
         {musicList.map((musicItem) => {
           return (
-            <MusicListItem key={musicItem} musicItem={musicItem} />
+            <MusicListItem key={musicItem.title} musicItem={musicItem} />
           );
         })}
       </Row>

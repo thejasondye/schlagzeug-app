@@ -1,57 +1,38 @@
 import React, { useState } from 'react';
-import { Row, Col, Button, Card} from 'react-bootstrap';
+import { Row, Col, Button, ListGroup, ListGroupItem, Card} from 'react-bootstrap';
 
 const MusicListItem = (props) => {
 
   const {musicItem} = props;
-
   return (
     <Card className="music-item">
     <Row>
       <Card.Header>
         <Row>
-          //  THIS IS A MUSIC LIST ITEM
+          {musicItem.instrument}
         </Row>
       </Card.Header>
     </Row>
 
-      <Card.Title>
-        // CARD TITLE HERE
+      <Card.Title style={{padding: "12 0 0 0"}}>
+        {musicItem.title}
       </Card.Title>
 
     <Card.Body>
 
       <Card.Text>
-        // TEXT OR CONTENT HERE
+        Tempo: {musicItem.tempo}
       </Card.Text>
 
-      <Card.Text>
-        // MAYBE MORE INFO HERE
-      </Card.Text>
-
-      {/* <ListGroup>
-        {recommend &&
+      <ListGroup>
           <ListGroupItem style={{backgroundColor: "rgb(240, 255, 248)"}}>
             <Card.Text>
-              I recommend this product &#10003;
+              {`${musicItem.style} ${musicItem.category}`}
             </Card.Text>
           </ListGroupItem>
-        }
-
-        {response &&
-          <ListGroupItem  style={{backgroundColor: "rgb(240, 250, 255)"}}>
-            <b>Response from seller: </b> {response}
-          </ListGroupItem>
-        }
-      </ListGroup> */}
+      </ListGroup>
 
     </Card.Body>
-
-    <Row>
-      <Card.Footer>
-        // FOOTER INFORMATION HERE
-      </Card.Footer>
-    </Row>
 
     </Card>
   )

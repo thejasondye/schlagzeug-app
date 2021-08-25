@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Button, Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { Container, Row, Col, Button, Navbar, Nav, NavDropdown, ListGroup, ListGroupItem } from 'react-bootstrap';
 import MusicList from './components/MusicList.jsx';
 import MusicDisplay from './components/MusicDisplay.jsx';
 import AudioPlayer from './components/AudioPlayer.jsx';
@@ -8,14 +8,14 @@ import axios from 'axios';
 
 const App = (props) => {
 
-  const [musicList, setMusitList] = useState(['music list item 1', 'music list item 2', 'music list item 3']);
+  const [musicList, setMusicList] = useState(['music list item 1', 'music list item 2', 'music list item 3']);
   const [currentMusic, setCurrentMusic] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/excerpts/Equinox')
+    axios.get('http://localhost:3000/excerpts/')
       .then((res) => {
-        setCurrentMusic(res.data[0]);
+        setMusicList(res.data);
         setIsLoading(false);
       })
       .catch((err) => {
@@ -26,7 +26,6 @@ const App = (props) => {
   if (isLoading) {
     return <h3> Loading ... </h3>;
   } else {
-    console.log(currentMusic.url);
     return (
       <Container>
 
@@ -57,18 +56,34 @@ const App = (props) => {
           </Container>
         </Navbar>
 
-        <Row>
+        <Row style={{padding}}>
+
           <Col sm={3}>
-            <MusicList musicList={musicList} />
+            <MusicList musicList={ musicList } />
           </Col>
-          <Col sm={9}>
-            <Row>
-              <MusicDisplay currentMusic={currentMusic} />
-            </Row>
-            <Row>
-              <AudioPlayer recordings={currentMusic.recordings} />
-            </Row>
-          </Col>
+
+            {currentMusic &&
+              <Col sm={9}>
+                <Row>
+                  <MusicDisplay currentMusic={ currentMusic } />
+                </Row>
+                <Row>
+                  <AudioPlayer recordings={ null || currentMusic.recordings } />
+                </Row>
+              </Col>
+            }
+            {!currentMusic &&
+              <Col sm={9} className="d-flex align-items-center justify-content-center">
+                <Row>
+                  <ListGroup className="noMusicSelectedMessage">
+                      <ListGroupItem className="noMusicSelectedMessage" style={{backgroundColor: "rgb(230, 213, 253)"}}>
+                          Please make a selection from the Collection List
+                      </ListGroupItem>
+                  </ListGroup>
+                </Row>
+              </Col>
+            }
+
         </Row>
 
         <Row>
