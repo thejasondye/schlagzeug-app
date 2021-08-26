@@ -5,7 +5,6 @@ import ReactAudioPlayer from 'react-audio-player';
 const AudioPlayer = (props) => {
 
   const { recordings } = props;
-  // style={{ height: "80px" }}
   if (recordings) {
     return (
       <>
@@ -15,7 +14,7 @@ const AudioPlayer = (props) => {
               <Col sm={6} className="d-flex align-items-center justify-content-left recordingsTitle">
                 {recording.title}
               </Col>
-              <Col sm={6}>
+              <Col sm={6} className="d-flex align-items-center justify-content-right">
                 <ReactAudioPlayer src={ recording.url } controls={ true } />
               </Col>
             </Row>

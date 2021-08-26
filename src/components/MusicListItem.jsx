@@ -3,34 +3,36 @@ import { Row, Col, Button, ListGroup, ListGroupItem, Card} from 'react-bootstrap
 
 const MusicListItem = (props) => {
 
-  const {musicItem} = props;
+  const { musicItem, handleListItemClick, index } = props;
+
+  const [borderGlow, setBorderGlow] = useState('grey');
+
   return (
-    <Card className="music-item">
+    <Card
+      className="music-item"
+      id={ index }
+      style={{ borderColor: borderGlow }}
+      onClick={ (e) => handleListItemClick(e) }
+      onMouseEnter={ () => setBorderGlow('blue') }
+      onMouseLeave={ () => setBorderGlow('grey') }
+    >
     <Row>
-      <Card.Header>
-        <Row>
-          {musicItem.instrument}
-        </Row>
+      <Card.Header style={{ fontSize: "18px", fontWeight: "600", cursor: "pointer" }}>
+        {musicItem.title}
       </Card.Header>
     </Row>
 
-      <Card.Title style={{padding: "12 0 0 0"}}>
-        {musicItem.title}
+      <Card.Title style={{ padding: "12px 0 0 0", fontSize: "12px", fontWeight: "400", cursor: "pointer" }}>
+        {musicItem.instrument}
       </Card.Title>
 
-    <Card.Body>
+    <Card.Body style={{ padding: "0 0 8px" }}>
 
-      <Card.Text>
+      <Card.Text style={{ padding: "0", margin: "2px", fontSize: "12px", cursor: "pointer" }}>
         Tempo: {musicItem.tempo}
+        <br/>
+        {`${ musicItem.style } ${ musicItem.category }`}
       </Card.Text>
-
-      <ListGroup>
-          <ListGroupItem style={{backgroundColor: "rgb(240, 255, 248)"}}>
-            <Card.Text>
-              {`${musicItem.style} ${musicItem.category}`}
-            </Card.Text>
-          </ListGroupItem>
-      </ListGroup>
 
     </Card.Body>
 

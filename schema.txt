@@ -1,27 +1,27 @@
 ,
-    "title": "MS Snare Studies Level 1B-6",
-    "level": 1,
-    "instrument": "snareDrum",
-    "family": "drums",
-    "tempo": 136,
-    "url": "./lib/sheet_music/MS-Snare-Studies-Level-1B-6.png",
-    "style": "fundamental",
-    "category": "solo",
+    "title": "Leap Frog",
+    "level": 2,
+    "instrument": "Marimba",
+    "family": "keyboard",
+    "tempo": 112,
+    "url": "./lib/sheet_music/Leap-Frog.png",
+    "style": "Orchestral",
+    "category": "Solo",
     "recordings": [
       {
-        "title": "MS Snare Studies Level 1B-6 - 136",
-        "url": "./lib/recordings/ms_snare_studies/MS-Snare-Studies-Level-1B-6-136.mp3",
-        "tempo": 136
+        "title": "Leap Frog - 112",
+        "url": "./lib/recordings/leap_frog/Leap-Frog-112.mp3",
+        "tempo": 112
       },
       {
-        "title": "MS Snare Studies Level 1B-6 - 120",
-        "url": "./lib/recordings/ms_snare_studies/MS-Snare-Studies-Level-1B-6-120.mp3",
-        "tempo": 120
+        "title": "Leap Frog - 100",
+        "url": "./lib/recordings/leap_frog/Leap-Frog-100.mp3",
+        "tempo": 100
       },
       {
-        "title": "MS Snare Studies Level 1B-6 - 104",
-        "url": "./lib/recordings/ms_snare_studies/MS-Snare-Studies-Level-1B-6-104.mp3",
-        "tempo": 104
+        "title": "Leap Frog - 88",
+        "url": "./lib/recordings/leap_frog/Leap-Frog-88.mp3",
+        "tempo": 88
       }
     ]
 }
