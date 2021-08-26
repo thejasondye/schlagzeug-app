@@ -11,7 +11,7 @@ const MusicList = (props) => {
       <Row className="musicListTitle">
         In this collection:
       </Row>
-      <Row id="music-list" style={{height: "900px", overflow: "scroll", borderColor: "light grey", borderWidth: "2px"}} >
+      <Row id="music-list" style={{height: "900px", overflow: "scroll" }} >
         {musicList.map((musicItem, index) => {
           return (
             <MusicListItem key={musicItem.title} index={index} title={musicItem.title} musicItem={musicItem} handleListItemClick={handleListItemClick} />

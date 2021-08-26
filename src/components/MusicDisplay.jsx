@@ -6,7 +6,7 @@ const MusicDisplay = (props) => {
 /*style={{ height: "720px", overflow: "scroll" }}*/
   const { currentMusic } = props;
     return (
-      <Row style={{ height: "720px", overflow: "scroll" }}>
+      <Row style={{ height: "750px", overflow: "scroll" }}>
         <Image src={ currentMusic.url } fluid />
       </Row>
     )

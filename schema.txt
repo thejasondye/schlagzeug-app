@@ -25,3 +25,21 @@
       }
     ]
 }
+
+,
+    "title": "ilomilo",
+    "level": 4,
+    "instrument": "Front Ensemble",
+    "family": "keyboard",
+    "tempo": 120,
+    "url": "./lib/sheet_music/ilomilo.pdf",
+    "style": "Marching",
+    "category": "Front Ensemble",
+    "recordings": [
+      {
+        "title": "ilomilo - 120",
+        "url": "./lib/recordings/ilomilo.mp3",
+        "tempo": 120
+      }
+    ]
+}

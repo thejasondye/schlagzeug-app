@@ -61,7 +61,7 @@ const App = (props) => {
             { currentMusic &&
               <Col sm={9}>
 
-                <Row>
+                <Row style={{padding: "0 0 25px"}}>
                   <MusicDisplay currentMusic={ currentMusic } />
                 </Row>
 

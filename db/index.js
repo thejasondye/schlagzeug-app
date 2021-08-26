@@ -43,7 +43,7 @@ async function getOneExcerpt(title, callback) {
 // GET ALL EXCERPTS
 async function getAllExcerpts(callback) {
   console.log('the wrong db func is being called');
-  await Excerpt.find((err, excerpts) => {
+  await Excerpt.find().sort({ instrument: 1 }).exec((err, excerpts) => {
     if (err) {
       callback(err, null);
     } else {
