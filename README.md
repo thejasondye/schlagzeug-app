@@ -33,6 +33,9 @@ This iteration of Schlagzeug is a sample of what a 'Unit' might look like for a 
 ## Usage
 On the left is a populated list of musical exercises and solos to choose from, which might be the assignments for the given term of 3 to 6 weeks of study. When an item from the list is clicked, the sheet music populates to the right, and three audio practie tracks are shown below the sheet music.  This setup is considering what a student might need access to when practicing alone, or what an instructor might need to see and have access to when using a projector in a classroom setting.  The list and music are scrollable to allow for optimal positioning, and the sheet music is allowed to take up most of the viewport for clear viewing the notes and rhythms.
 
+![gif demonstrating click functionality](preview/ShlagzeugClickPreview.gif)
+
+
 ---
 
 ## Roadmap
