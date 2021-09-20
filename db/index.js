@@ -30,7 +30,6 @@ const Excerpt = mongoose.model('Excerpt', excerptSchema);
 
 // GET ONE EXCERPT
 async function getOneExcerpt(title, callback) {
-  console.log('the correct db func is being called');
   await Excerpt.findOne({ title: title }, (err, excerpt) => {
     if (err) {
       callback(err, null);
@@ -42,7 +41,6 @@ async function getOneExcerpt(title, callback) {
 
 // GET ALL EXCERPTS
 async function getAllExcerpts(callback) {
-  console.log('the wrong db func is being called');
   await Excerpt.find().sort({ instrument: 1 }).exec((err, excerpts) => {
     if (err) {
       callback(err, null);
