@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Row, Col, Button } from 'react-bootstrap';
 import ReactAudioPlayer from 'react-audio-player';
+import Grid from '@mui/material/Grid';
 
 const AudioPlayer = (props) => {
 
@@ -10,14 +10,14 @@ const AudioPlayer = (props) => {
       <>
         {recordings.map((recording) => {
           return (
-            <Row key={ recording.title }>
-              <Col sm={6} className="d-flex align-items-center justify-content-left recordingsTitle">
+            <Grid container key={ recording.title }>
+              <Grid item sm={6} className="d-flex align-items-center justify-content-left recordingsTitle">
                 {recording.title}
-              </Col>
-              <Col sm={6} className="d-flex align-items-center justify-content-right">
+              </Grid>
+              <Grid item sm={6} className="d-flex align-items-center justify-content-right">
                 <ReactAudioPlayer src={ recording.url } controls={ true } />
-              </Col>
-            </Row>
+              </Grid>
+            </Grid>
           )
         })}
       </>

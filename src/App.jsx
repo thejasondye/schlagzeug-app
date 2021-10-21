@@ -9,9 +9,12 @@ import axios from 'axios';
 
 const App = (props) => {
 
+  // convert to Zustand Store
   const [musicList, setMusicList] = useState(['music list item 1', 'music list item 2', 'music list item 3']);
   const [currentMusic, setCurrentMusic] = useState();
+  // this doesn't need to be in store ... 
   const [isLoading, setIsLoading] = useState(true);
+  // let isLoading = true;
 
   useEffect(() => {
     axios.get('http://localhost:3000/excerpts/')
@@ -27,20 +30,13 @@ const App = (props) => {
   const handleListItemClick = (e) => {
     const index =  e.target.offsetParent.id;
     setCurrentMusic(musicList[index]);
-
-    // axios.get(`http://localhost:3000/excerpts/${ e.target.offsetParent.id }`)
-    //   .then((res) => {
-    //     setCurrentMusic(res.data)
-    //   })
-    //   .catch((err) => {
-    //     console.log(`ERROR GETTING EXCERPT: ${ err }`);
-    //   })
   };
 
   if (isLoading) {
     return <h3> Loading ... </h3>;
   } else {
     return (
+
       <Container>
 
         <Row style={{ padding: "20px 0" }}>
