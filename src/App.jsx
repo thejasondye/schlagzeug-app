@@ -6,13 +6,14 @@ import MusicDisplay from './components/MusicDisplay.jsx';
 import AudioPlayer from './components/AudioPlayer.jsx';
 import NavBar from './components/NavBar.jsx';
 import axios from 'axios';
+import Typography from '@mui/material/Typography';
 
 const App = (props) => {
 
   // convert to Zustand Store
   const [musicList, setMusicList] = useState(['music list item 1', 'music list item 2', 'music list item 3']);
   const [currentMusic, setCurrentMusic] = useState();
-  // this doesn't need to be in store ... 
+  // this doesn't need to be in store ...
   const [isLoading, setIsLoading] = useState(true);
   // let isLoading = true;
 
@@ -27,13 +28,12 @@ const App = (props) => {
       })
   }, []);
 
-  const handleListItemClick = (e) => {
-    const index =  e.target.offsetParent.id;
+  const handleListItemClick = (index) => {
     setCurrentMusic(musicList[index]);
-  };
+  }
 
   if (isLoading) {
-    return <h3> Loading ... </h3>;
+    return <Typography variant="h1"> Loading ... </Typography>;
   } else {
     return (
 
