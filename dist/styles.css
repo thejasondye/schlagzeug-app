@@ -9,7 +9,11 @@
   font-weight: 600;
 }
 
-.musicListTitle {
+.musicListHeader {
   font-size: large;
   font-weight: 600;
+}
+
+.bold {
+  /* font-weight: 700; */
 }

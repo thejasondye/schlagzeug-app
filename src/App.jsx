@@ -1,12 +1,12 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Button, Navbar, Nav, NavDropdown, ListGroup, ListGroupItem } from 'react-bootstrap';
 import MusicList from './components/MusicList.jsx';
-import MusicDisplay from './components/MusicDisplay.jsx';
 import AudioPlayer from './components/AudioPlayer.jsx';
 import NavBar from './components/NavBar.jsx';
 import axios from 'axios';
-import Typography from '@mui/material/Typography';
+import { Typography, Container, Grid, Box, Paper } from '@mui/material';
+import textAlign from '@mui/system';
+
 
 const App = (props) => {
 
@@ -33,67 +33,72 @@ const App = (props) => {
   }
 
   if (isLoading) {
-    return <Typography variant="h1"> Loading ... </Typography>;
+    return <Typography variant="h1" sx={{ textAlign: 'center' }}> Loading ... </Typography>;
   } else {
     return (
 
-      <Container>
+      <Container sx={{ height: '75vh' }}>
 
-        <Row style={{ padding: "20px 0" }}>
-          <h1>Schlagzeug!</h1>
-        </Row>
-        <Row style={{textAlign: "right"}}>
-          <p>Hello, <b>User!</b></p>
-        </Row>
+        <Typography variant="h2" sx={{ padding: '20px 0' }}>
+          Schlagzeug!
+        </Typography>
+        <Typography sx={{ textAlign: 'right' }}>
+          Hello, <b>User!</b>
+        </Typography>
 
         <NavBar />
 
-        <Row style={{ padding: "20px 20px" }}>
+        <Grid
+          container
+          direction="row"
+          sx={{ padding: '20px 20px', height: '100%' }}
+        >
 
-          <Col sm={3}>
+          <Grid container item sm={3} sx={{ overflow: 'scroll', height: '100%' }}>
             <MusicList musicList={ musicList } handleListItemClick={ handleListItemClick }/>
-          </Col>
+          </Grid>
 
-            { currentMusic &&
-              <Col sm={9}>
+          { currentMusic &&
+            <Grid container item sm={9} sx={{ height: '100%' }}>
 
-                <Row style={{padding: "0 0 25px"}}>
-                  <MusicDisplay currentMusic={ currentMusic } />
-                </Row>
+              <Grid item sm={12} p={'0 0 25px'} sx={{ overflow: 'scroll', height: '70%' }}>
+                <Paper elevation={8}>
+                  <img src={ currentMusic.url } width="100%" height="100%" />
+                </Paper>
+              </Grid>
 
-                <Row>
-                  <AudioPlayer recordings={ null || currentMusic.recordings } />
-                </Row>
+              <Grid item sx={{height: '30%' }}>
+                <AudioPlayer recordings={ null || currentMusic.recordings } />
+              </Grid>
 
-                {/* <Row>
-                  <Col sm={4} className="d-grid">
-                    <Button onClick={set}>
-                      Previous
-                    </Button>
-                  </Col>
-                  <Col sm={4}></Col>
-                  <Col sm={4} className="d-grid">
-                    <Button>
-                      Next
-                    </Button>
-                  </Col>
-                </Row> */}
+              {/* <Grid>
+                <Grid sm={4} className="d-grid">
+                  <Button onClick={set}>
+                    Previous
+                  </Button>
+                </Grid>
+                <Grid sm={4}></Grid>
+                <Grid sm={4} className="d-grid">
+                  <Button>
+                    Next
+                  </Button>
+                </Grid>
+              </Grid> */}
 
-              </Col>
-            }
-            {!currentMusic &&
-              <Col sm={9} className="d-flex align-items-center justify-content-center">
-                <Row>
-                  <ListGroup className="noMusicSelectedMessage">
-                      <ListGroupItem className="noMusicSelectedMessage" style={{ backgroundColor: "#ede9f7" }}>
-                          Please make a selection from the Collection List
-                      </ListGroupItem>
-                  </ListGroup>
-                </Row>
-              </Col>
-            }
+            </Grid>
+          }
 
-        </Row>
+          {!currentMusic &&
+            <Grid item sm={9} className="d-flex align-items-center justify-content-center">
+              <Grid>
+                <Box p={ '5px 16px' } className="noMusicSelectedMessage" sx={{ backgroundColor: '#ede9f7', borderRadius: '5px' }}>
+                    Please make a selection from the Collection List
+                </Box>
+              </Grid>
+            </Grid>
+          }
+
+        </Grid>
 
       </Container>
     );

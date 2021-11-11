@@ -1,26 +1,34 @@
 import React, { useState } from 'react';
 import { Row, Col, Button } from 'react-bootstrap';
 import MusicListItem from './MusicListItem.jsx';
+import Grid from '@mui/material/Grid';
 
 const MusicList = (props) => {
 
   const {musicList, handleListItemClick} = props;
 
   return (
-    <React.Fragment>
-      <Row className="musicListTitle">
+    <Grid container item px={'12px'} sx={{ height: '100%' }}>
+      <Grid item className="musicListHeader" mb="10px" sx={{ height: '10%' }}>
         In this collection:
-      </Row>
-      <Row id="music-list" style={{height: "900px", overflow: "scroll" }} >
-        {musicList.map((musicItem, index) => {
+      </Grid>
+      <Grid
+        container
+        item
+        id="music-list"
+        spacing={1}
+        sx={{ height: '90%', overflow: 'scroll' }}
+      >
+        { musicList.map((musicItem, index) => {
           return (
-            <MusicListItem key={musicItem.title} index={index} title={musicItem.title} musicItem={musicItem} handleListItemClick={handleListItemClick} />
+            <Grid item key={musicItem.title} xs={12} >
+              <MusicListItem index={index} title={musicItem.title} musicItem={musicItem} handleListItemClick={handleListItemClick} />
+            </Grid>
           );
         })}
-      </Row>
-    </React.Fragment>
+      </Grid>
+    </Grid>
   );
-
 }
 
 export default MusicList;
