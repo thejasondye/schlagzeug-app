@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon server/index.js",
-    "build": "webpack -w --mode development --config webpack.config.js",
-    "build-dev": "webpack --mode development --config webpack.config.js",
+    "build": "webpack --mode development --config webpack.config.js",
+    "build-dev": "webpack -w --mode development --config webpack.config.js",
     "start-dev": "node server/index.js",
     "test": "test"
   },
@@ -47,6 +47,7 @@
     "css-loader": "^6.2.0",
     "react-audio-player": "^0.17.0",
     "react-bootstrap": "^2.0.0-beta.5",
+    "react-router-dom": "^6.2.1",
     "style-loader": "^3.2.1",
     "zustand": "^3.5.10"
   }
