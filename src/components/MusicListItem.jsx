@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
+import {
+  Box,
+  Grid,
+  Card,
+  CardHeader,
+  CardContent,
+  Typography
+} from '@mui/material';
 // import createTheme from '@mui/material/styles';
 
 // const theme = createTheme({});

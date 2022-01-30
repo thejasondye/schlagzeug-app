@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Row, Col, Button } from 'react-bootstrap';
-import MusicListItem from './MusicListItem.jsx';
+import MusicListItem from './MusicListItem';
 import Grid from '@mui/material/Grid';
 
 const MusicList = (props) => {

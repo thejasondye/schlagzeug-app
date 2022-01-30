@@ -6,11 +6,9 @@ import {
   Route
 } from 'react-router-dom';
 
-import App from './App.jsx';
-import Home from './routes/Home.jsx';
-import Landing from './routes/Landing.jsx';
-
-import 'bootstrap/dist/css/bootstrap.min.css';
+import App from './App';
+import Home from './routes/Home';
+import Landing from './routes/Landing';
 
 const root = document.getElementById('app');
 render(

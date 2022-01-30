@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import useStore from '../zustandStore';
 
-import MusicList from '../components/MusicList.jsx';
-import AudioPlayer from '../components/AudioPlayer.jsx';
-import NavBar from '../components/NavBar.jsx';
+import MusicList from '../components/MusicList';
+import AudioPlayer from '../components/AudioPlayer';
+import NavBar from '../components/NavBar';
 
 import { Typography, Container, Grid, Box, Paper } from '@mui/material';
 import textAlign from '@mui/system';
@@ -37,16 +37,6 @@ export default function Home(props) {
   return (
 
     <Container sx={{ height: '75vh' }}>
-      <span>
-        <Typography sx={{ padding: '20px 0', fontSize: '30px' }}>
-          Schlagzeug!
-        </Typography>
-      </span>
-      <span>
-        <Typography sx={{ textAlign: 'right' }}>
-          Hello, <b>User!</b>
-        </Typography>
-      </span>
 
       <NavBar />
       {!isLoading &&
