@@ -7,16 +7,29 @@ import {
 } from 'react-router-dom';
 
 import App from './App';
-import Home from './routes/Home';
-import Landing from './routes/Landing';
+import Music from './routes/Music';
+import Blog from './routes/Blog';
+
+import { Grid, Typography } from '@mui/material';
 
 const root = document.getElementById('app');
 render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<App/>} />
-      <Route path="Home" element={<Home />} />
-      <Route path="Landing" element={<Landing />} />
+      <Route path="/" element={<App />}>
+        <Route path="music" element={<Music />} />
+        <Route path="blog" element={<Blog />} />
+        <Route
+          path="*"
+          element={
+            <Grid style={{ padding: "1rem" }}>
+              <Typography variant="h2">
+                There's nothing here!
+              </Typography>
+            </Grid>
+          }
+        />
+      </Route>
     </Routes>
   </BrowserRouter>
   , root);

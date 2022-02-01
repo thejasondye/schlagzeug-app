@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import MusicListItem from './MusicListItem';
+
 import Grid from '@mui/material/Grid';
+import Grow from '@mui/material/Grow';
+import clsx from 'clsx';
 
 const MusicList = (props) => {
 
@@ -20,9 +23,21 @@ const MusicList = (props) => {
       >
         { musicList.map((musicItem, index) => {
           return (
-            <Grid item key={musicItem.title} xs={12} >
-              <MusicListItem index={index} title={musicItem.title} musicItem={musicItem} handleListItemClick={handleListItemClick} />
-            </Grid>
+            <Grow
+              in={true}
+              timeout={(index + 1) * 300}
+              style={{ transformOrigin: '0 0 0' }}
+              key={musicItem.title}
+            >
+              <Grid item xs={12}>
+                <MusicListItem
+                  index={index}
+                  title={musicItem.title}
+                  musicItem={musicItem}
+                  handleListItemClick={handleListItemClick}
+                />
+              </Grid>
+            </Grow>
           );
         })}
       </Grid>

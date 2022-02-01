@@ -15,7 +15,11 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 
 
-const pages = ['Home', 'Landing', 'Blog'];
+const pages = [
+  {name: 'Home', link: '/'},
+  {name: 'Music', link: 'music'},
+  {name: 'Blog', link: 'blog'}
+];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const NavBar = () => {
@@ -38,7 +42,15 @@ const NavBar = () => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar
+      position="static"
+      sx={{
+        width: '100%',
+        borderRadius: '8px',
+        backgroundColor: '#306678',
+        color: 'primary.contrastText'
+      }}
+    >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
@@ -80,10 +92,10 @@ const NavBar = () => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">
-                    <Link to={`/${page}`}>{page}</Link>
-                  </Typography>
+                <MenuItem key={page.name} onClick={handleCloseNavMenu}>
+                  <Link to={page.link} style={{ textDecoration: 'none', color: '#FDCB0B' }}>
+                    <Typography textAlign="center">{page.name}</Typography>
+                  </Link>
                 </MenuItem>
               ))}
             </Menu>
@@ -98,13 +110,14 @@ const NavBar = () => {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                <Link to={`/${page}`}>{page}</Link>
-              </Button>
+              <Link to={page.link} key={page.name} style={{ textDecoration: 'none' }}>
+                <Button
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: '#FDCB0B', display: 'block' }}
+                >
+                  <Typography textAlign="center">{page.name}</Typography>
+                </Button>
+              </Link>
             ))}
           </Box>
 

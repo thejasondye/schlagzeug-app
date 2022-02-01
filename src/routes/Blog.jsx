@@ -9,15 +9,14 @@ import { Typography, Container, Grid, Box, Paper } from '@mui/material';
 import textAlign from '@mui/system';
 
 
-export default function Landing(props) {
+export default function Blog(props) {
 
   return (
 
-    <Grid container>
-      <NavBar />
+    <Container>
       <Grid item>
-        <Typography variant="h2">This is the Landing Page</Typography>
+        <Typography variant="h2">This is the Blog Page</Typography>
       </Grid>
-    </Grid>
+    </Container>
   );
 };

@@ -10,7 +10,7 @@ import { Typography, Container, Grid, Box, Paper } from '@mui/material';
 import textAlign from '@mui/system';
 
 
-export default function Home(props) {
+export default function Music(props) {
 
   // convert to Zustand Store
   const [musicList, setMusicList] = useState(['music list item 1', 'music list item 2', 'music list item 3']);
@@ -36,10 +36,7 @@ export default function Home(props) {
 
   return (
 
-    <Container sx={{ height: '75vh' }}>
-
-      <NavBar />
-      {!isLoading &&
+      !isLoading &&
         <Grid
           container
           direction="row"
@@ -63,20 +60,6 @@ export default function Home(props) {
                 <AudioPlayer recordings={ null || currentMusic.recordings } />
               </Grid>
 
-              {/* <Grid>
-                <Grid sm={4} className="d-grid">
-                  <Button onClick={set}>
-                    Previous
-                  </Button>
-                </Grid>
-                <Grid sm={4}></Grid>
-                <Grid sm={4} className="d-grid">
-                  <Button>
-                    Next
-                  </Button>
-                </Grid>
-              </Grid> */}
-
             </Grid>
           }
 
@@ -91,8 +74,5 @@ export default function Home(props) {
           }
 
         </Grid>
-      }
-
-    </Container>
   );
 };

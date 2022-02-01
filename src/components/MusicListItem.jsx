@@ -21,12 +21,11 @@ const MusicListItem = (props) => {
 
   return (
       <Card
-        id={ index }
-        className="music-item"
+        id={index}
         elevation={elevate}
-        border="10px"
         sx={{
           height: '100px',
+          width: '80%',
           cursor: 'pointer',
           p: "8px"
         }}
