@@ -7,7 +7,6 @@ import AudioPlayer from '../components/AudioPlayer';
 import NavBar from '../components/NavBar';
 
 import { Typography, Container, Grid, Box, Paper } from '@mui/material';
-import textAlign from '@mui/system';
 
 
 export default function Music(props) {

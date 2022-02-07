@@ -9,6 +9,7 @@ import {
 import App from './App';
 import Music from './routes/Music';
 import Blog from './routes/Blog';
+import Home from './routes/Home';
 
 import { Grid, Typography } from '@mui/material';
 
@@ -17,6 +18,7 @@ render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />}>
+        <Route index element={<Home />} />
         <Route path="music" element={<Music />} />
         <Route path="blog" element={<Blog />} />
         <Route

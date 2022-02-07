@@ -33,7 +33,7 @@ export default function App(props) {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container disableGutters sx={{ height: '100vh' }}>
+      <Container disableGutters sx={{ height: '100vh', mx: '0px' }}>
         <NavBar />
         <Outlet />
       </Container>
