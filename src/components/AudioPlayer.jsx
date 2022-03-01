@@ -13,7 +13,7 @@ export default function AudioPlayer(props) {
           return (
             <Grid container key={recording.title} sx={{ alignItems: 'center' }}>
               <Grid item sm={6}>
-                <Typography color="secondary" >
+                <Typography color="secondary">
                   {recording.title}
                 </Typography>
               </Grid>

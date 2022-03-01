@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import MusicListItem from './MusicListItem';
+import useStore from '../zustandStore';
 
 import Grid from '@mui/material/Grid';
 import Grow from '@mui/material/Grow';
@@ -8,7 +9,13 @@ import Box from '@mui/material/Box';
 
 export default function MusicList(props) {
 
-  const {musicList, handleListItemClick} = props;
+  // global state
+  const musicList = useStore(state => state.musicList);
+  const setCurrentMusic = useStore(state => state.setCurrentMusic);
+  // handler functions
+  const handleListItemClick = (index) => {
+    setCurrentMusic(musicList[index]);
+  };
 
   return (
     <Grid
@@ -31,19 +38,18 @@ export default function MusicList(props) {
             overflow: 'scroll'
           }}
         >
-          { musicList.map((musicItem, index) => {
+          { musicList.map((exerpt, index) => {
             return (
               <Grow
                 in={true}
                 timeout={(index + 1) * 300}
                 style={{ transformOrigin: '0 0 0' }}
-                key={musicItem.title}
+                key={exerpt.title}
               >
                 <Grid item xs={12}>
                   <MusicListItem
                     index={index}
-                    title={musicItem.title}
-                    musicItem={musicItem}
+                    exerpt={exerpt}
                     handleListItemClick={handleListItemClick}
                   />
                 </Grid>

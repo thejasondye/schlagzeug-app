@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import useStore from '../zustandStore';
 import {
   Box,
   Grid,
@@ -7,46 +8,37 @@ import {
   CardContent,
   Typography
 } from '@mui/material';
-// import createTheme from '@mui/material/styles';
 
-// const theme = createTheme({});
-// console.log(theme);
 export default function MusicListItem(props) {
 
-  // convert this to Zustand for sure, minus the musicItem (mapped from parent)
-  const { musicItem, handleListItemClick, index } = props;
-
-  // convert to Zustand Store??
-  const [elevate, setElevate] = useState(1);
+  const { exerpt, handleListItemClick, index } = props;
+  const [shift, setShift] = useState('0px');
 
   return (
       <Card
         id={index}
-        elevation={elevate}
+        elevation={2}
         sx={{
-          // height: '100px',
-          // width: '80%',
           cursor: 'pointer',
-          p: "8px"
+          p: '8px',
+          transform: `translatex(${shift})`
         }}
         onClick={ () =>  handleListItemClick(index) }
-        onMouseEnter={ () => setElevate(6) }
-        onMouseLeave={ () => setElevate(2) }
+        onMouseEnter={ () => setShift('10px') }
+        onMouseLeave={ () => setShift('0px') }
       >
-
         <Typography variant="body1" fontWeight="bold">
-          {musicItem.title}
+          {exerpt.title}
         </Typography>
         <Typography variant="subtitle">
-          {musicItem.instrument}
+          {exerpt.instrument}
         </Typography>
         <Typography variant="body1">
-          Tempo: {musicItem.tempo}
+          Tempo: {exerpt.tempo}
         </Typography>
         <Typography variant="caption">
-          {`${ musicItem.style } ${ musicItem.category }`}
+          {`${ exerpt.style } ${ exerpt.category }`}
         </Typography>
-
       </Card>
   )
 }

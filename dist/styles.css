@@ -2,12 +2,6 @@ body {
   background-color: #073E55;
 }
 
-.recordingsTitle {
-  font-size: medium;
-  font-weight: 600;
-  padding: 0 0 0 25px;
-}
-
 .noMusicSelectedMessage {
   font-size: x-large;
   font-weight: 600;

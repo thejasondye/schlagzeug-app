@@ -4,19 +4,18 @@ import useStore from '../zustandStore';
 
 import MusicList from '../components/MusicList';
 import AudioPlayer from '../components/AudioPlayer';
-import NavBar from '../components/NavBar';
 
-import { Typography, Container, Grid, Box, Paper } from '@mui/material';
+import { Typography, Container, Grid, Box, Paper, Button, Link } from '@mui/material';
+import DownloadIcon from '@mui/icons-material/Download';
 
 
 export default function Music(props) {
 
-  // convert to Zustand Store
-  const [musicList, setMusicList] = useState(['music list item 1', 'music list item 2', 'music list item 3']);
-  const [currentMusic, setCurrentMusic] = useState();
-  // this doesn't need to be in store ...
+  // global state
+  const setMusicList = useStore(state => state.setMusicList);
+  const currentMusic = useStore(state => state.currentMusic);
+  // local state
   const [isLoading, setIsLoading] = useState(true);
-  // let isLoading = true;
 
   useEffect(() => {
     axios.get('http://localhost:3000/excerpts/')
@@ -29,9 +28,6 @@ export default function Music(props) {
       })
   }, []);
 
-  const handleListItemClick = (index) => {
-    setCurrentMusic(musicList[index]);
-  };
 
   return (
 
@@ -47,7 +43,7 @@ export default function Music(props) {
             item
             sm={3}
           >
-            <MusicList musicList={ musicList } handleListItemClick={ handleListItemClick }/>
+            <MusicList />
           </Grid>
 
           { currentMusic &&
@@ -65,8 +61,12 @@ export default function Music(props) {
                   <img src={ currentMusic.url } width="100%" height="100%" />
                 </Paper>
               </Grid>
-
-              <Grid item mt="15px" sx={{ height: '30%' }}>
+              <Grid item sm={12} p={'5px 0 5px'} >
+                <Button variant="contained" endIcon={<DownloadIcon />} href={currentMusic.url} download>
+                  Download Sheet Music
+                </Button>
+              </Grid>
+              <Grid item sm={12} mt="15px" sx={{ height: '30%' }}>
                 <AudioPlayer recordings={ null || currentMusic.recordings } />
               </Grid>
 
@@ -90,7 +90,7 @@ export default function Music(props) {
                   width: '50%'
                 }}
               >
-                <Typography variant="h5" color="secondary" align="center">
+                <Typography variant="h5" color="primary" fontWeight="bold" align="center">
                   Please make a selection from the Collection List
                 </Typography>
               </Box>
