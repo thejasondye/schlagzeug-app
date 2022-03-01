@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import ReactAudioPlayer from 'react-audio-player';
 import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
 
-const AudioPlayer = (props) => {
+export default function AudioPlayer(props) {
 
   const { recordings } = props;
   if (recordings) {
@@ -10,11 +11,13 @@ const AudioPlayer = (props) => {
       <>
         {recordings.map((recording) => {
           return (
-            <Grid container key={ recording.title }>
-              <Grid item sm={6} className="d-flex align-items-center justify-content-left recordingsTitle">
-                {recording.title}
+            <Grid container key={recording.title} sx={{ alignItems: 'center' }}>
+              <Grid item sm={6}>
+                <Typography color="secondary" >
+                  {recording.title}
+                </Typography>
               </Grid>
-              <Grid item sm={6} className="d-flex align-items-center justify-content-right">
+              <Grid item sm={6}>
                 <ReactAudioPlayer src={ recording.url } controls={ true } />
               </Grid>
             </Grid>
@@ -26,5 +29,3 @@ const AudioPlayer = (props) => {
     return null;
   }
 }
-
-export default AudioPlayer;

@@ -45,7 +45,8 @@ const NavBar = () => {
     <AppBar
       position="static"
       sx={{
-        width: '100vw',
+        width: '99vw',
+        height: 'auto',
         borderRadius: '8px',
         backgroundColor: '#306678',
         color: 'primary.contrastText'
@@ -63,6 +64,8 @@ const NavBar = () => {
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+
+            {/* Burger Icon */}
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -73,6 +76,8 @@ const NavBar = () => {
             >
               <MenuIcon />
             </IconButton>
+
+            {/* Popup menu (sm/xs) */}
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
@@ -88,18 +93,22 @@ const NavBar = () => {
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: 'block', md: 'none' },
+                display: { xs: 'block', md: 'none' }
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page.name} onClick={handleCloseNavMenu}>
+                <MenuItem key={page.name} onClick={handleCloseNavMenu} sx={{ backgroundColor: '#9AB3BA' }}>
                   <Link to={page.link} style={{ textDecoration: 'none', color: '#FDCB0B' }}>
                     <Typography textAlign="center">{page.name}</Typography>
                   </Link>
                 </MenuItem>
               ))}
             </Menu>
+
           </Box>
+
+          {/* Title */}
+
           <Typography
             variant="h6"
             noWrap
@@ -108,6 +117,7 @@ const NavBar = () => {
           >
             Schlagzeug
           </Typography>
+
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Link to={page.link} key={page.name} style={{ textDecoration: 'none' }}>

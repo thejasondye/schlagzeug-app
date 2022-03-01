@@ -39,23 +39,34 @@ export default function Music(props) {
         <Grid
           container
           direction="row"
-          sx={{ padding: '20px 20px', height: '100%' }}
+          sx={{ padding: '20px 20px', height: '90vh' }}
         >
 
-          <Grid container item sm={3} sx={{ overflow: 'scroll', height: '100%' }}>
+          <Grid
+            container
+            item
+            sm={3}
+          >
             <MusicList musicList={ musicList } handleListItemClick={ handleListItemClick }/>
           </Grid>
 
           { currentMusic &&
-            <Grid container item sm={9} sx={{ height: '100%' }}>
+            <Grid container p={'7px 0 0 15px'} item sm={9} sx={{ height: '100%' }}>
 
-              <Grid item sm={12} p={'0 0 25px'} sx={{ overflow: 'scroll', height: '70%' }}>
-                <Paper elevation={8}>
+              <Grid
+                item
+                sm={12}
+                sx={{
+                  overflow: 'scroll',
+                  height: '70%'
+                }}
+              >
+                <Paper sx={{ padding: '20px' }} elevation={8}>
                   <img src={ currentMusic.url } width="100%" height="100%" />
                 </Paper>
               </Grid>
 
-              <Grid item sx={{height: '30%' }}>
+              <Grid item mt="15px" sx={{ height: '30%' }}>
                 <AudioPlayer recordings={ null || currentMusic.recordings } />
               </Grid>
 
@@ -63,15 +74,29 @@ export default function Music(props) {
           }
 
           {!currentMusic &&
-            <Grid item sm={9} className="d-flex align-items-center justify-content-center">
-              <Grid>
-                <Box p={ '5px 16px' } className="noMusicSelectedMessage" sx={{ backgroundColor: '#ede9f7', borderRadius: '5px' }}>
-                    Please make a selection from the Collection List
-                </Box>
-              </Grid>
+            <Grid
+              item
+              sm={9}
+              display="flex"
+              m="auto"
+              alignContent="center"
+              justifyContent="center"
+            >
+              <Box
+                sx={{
+                  backgroundColor: '#ede9f7',
+                  borderRadius: '5px',
+                  padding: '5px 16px',
+                  width: '50%'
+                }}
+              >
+                <Typography variant="h5" color="secondary" align="center">
+                  Please make a selection from the Collection List
+                </Typography>
+              </Box>
             </Grid>
           }
 
         </Grid>
   );
-};
+}

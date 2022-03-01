@@ -39,5 +39,4 @@ export default function App(props) {
       </Container>
     </ThemeProvider>
   );
-};
-
+}

@@ -11,7 +11,7 @@ import {
 
 // const theme = createTheme({});
 // console.log(theme);
-const MusicListItem = (props) => {
+export default function MusicListItem(props) {
 
   // convert this to Zustand for sure, minus the musicItem (mapped from parent)
   const { musicItem, handleListItemClick, index } = props;
@@ -24,8 +24,8 @@ const MusicListItem = (props) => {
         id={index}
         elevation={elevate}
         sx={{
-          height: '100px',
-          width: '80%',
+          // height: '100px',
+          // width: '80%',
           cursor: 'pointer',
           p: "8px"
         }}
@@ -50,5 +50,3 @@ const MusicListItem = (props) => {
       </Card>
   )
 }
-
-export default MusicListItem;
