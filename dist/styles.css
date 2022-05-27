@@ -15,7 +15,7 @@ html.dark-theme {
 body {
   background-color: var(--bg-primary);
   display: grid;
-  font-family: "'Avenir', 'Georgia', 'Helvetica', sans-serif";
+  font-family: "Avenir", Verdana, Helvetica, Georgia;
 }
 
 .container {
