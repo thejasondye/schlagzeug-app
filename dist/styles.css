@@ -1,8 +1,16 @@
 body {
   background-color: #073E55;
+  font-family: "'Avenir', 'Georgia', 'Helvetica', sans-serif";
 }
 
 .noMusicSelectedMessage {
   font-size: x-large;
   font-weight: 600;
+}
+
+html {
+  --bg-primary: #073E55;
+  --text-main: #306678;
+  --text-secondary: #9AB3BA;
+  --text-warning: #FDCB0B;
 }
