@@ -11,16 +11,16 @@ export default function AudioPlayer(props) {
       <>
         {recordings.map((recording) => {
           return (
-            <Grid container className="center" key={recording.title} sx={{ alignItems: 'center' }}>
-              <Grid item sm={6}>
-                <Typography color="secondary">
+            <div id="recording-item" className="center container" key={recording.title}>
+              <div className="item">
+                <div className="recording-title">
                   {recording.title}
-                </Typography>
-              </Grid>
-              <Grid item sm={6}>
+                </div>
+              </div>
+              <div className="item">
                 <ReactAudioPlayer src={ recording.url } controls={ true } />
-              </Grid>
-            </Grid>
+              </div>
+            </div>
           )
         })}
       </>

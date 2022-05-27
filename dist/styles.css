@@ -1,14 +1,14 @@
 html {
   --bg-primary: #073E55;
   --bg-secondary: #306678;
-  --text-main: #9AB3BA;
+  --text-primary: #9AB3BA;
   --text-warning: #FDCB0B;
 }
 
 html.dark-theme {
   --bg-primary: #020e13;
   --bg-secondary: #17313a;
-  --text-main: #9AB3BA;
+  --text-primary: #9AB3BA;
   --text-warning: #c0a94d;
 }
 
@@ -16,6 +16,22 @@ body {
   background-color: var(--bg-primary);
   display: grid;
   font-family: "'Avenir', 'Georgia', 'Helvetica', sans-serif";
+}
+
+.container {
+  margin: 10px;
+}
+
+.item {
+  margin: 10px;
+}
+
+#recording-item {
+  grid: 1fr 1fr / auto;
+}
+
+.recording-title {
+  color: var(--text-primary)
 }
 
 center {
