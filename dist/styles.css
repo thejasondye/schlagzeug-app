@@ -10,7 +10,7 @@ body {
 
 html {
   --bg-primary: #073E55;
-  --text-main: #306678;
-  --text-secondary: #9AB3BA;
+  --bg-secondary: #306678;
+  --text-main: #9AB3BA;
   --text-warning: #FDCB0B;
 }
