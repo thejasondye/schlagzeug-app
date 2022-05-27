@@ -22,6 +22,9 @@ const theme = createTheme({
     warning: {
       main: '#FDCB0B'
     },
+    error: {
+      main: '#FDCB0B'
+    },
   },
   typography: {
     fontFamily: "'Avenir', 'Georgia', 'Helvetica', sans-serif"

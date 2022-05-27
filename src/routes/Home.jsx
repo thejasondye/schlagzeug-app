@@ -8,14 +8,14 @@ import NavBar from '../components/NavBar';
 
 import { Typography, Container, Grid, Box, Paper, Button } from '@mui/material';
 
-const cache = {};
-const images = [];
-const importAll = (r) => {
-  r.keys().forEach((key) => images.push('./lib/images/home' + key.replace('.', '')));
-};
-importAll(require.context('../../dist/lib/images/home', false, /\.png$/));
 
 export default function Home() {
+
+  const images = [];
+  const importAll = (r) => {
+    r.keys().forEach((key) => images.push('./lib/images/home' + key.replace('.', '')));
+  };
+  importAll(require.context('../../dist/lib/images/home', false, /\.png$/));
 
   const [index, setIndex] = useState(0);
 
