@@ -1,16 +1,29 @@
-body {
-  background-color: #073E55;
-  font-family: "'Avenir', 'Georgia', 'Helvetica', sans-serif";
-}
-
-.noMusicSelectedMessage {
-  font-size: x-large;
-  font-weight: 600;
-}
-
 html {
   --bg-primary: #073E55;
   --bg-secondary: #306678;
   --text-main: #9AB3BA;
   --text-warning: #FDCB0B;
+}
+
+html.dark-theme {
+  --bg-primary: #020e13;
+  --bg-secondary: #17313a;
+  --text-main: #9AB3BA;
+  --text-warning: #c0a94d;
+}
+
+body {
+  background-color: var(--bg-primary);
+  display: grid;
+  font-family: "'Avenir', 'Georgia', 'Helvetica', sans-serif";
+}
+
+center {
+  align-items: center;
+  justify-content: center;
+}
+
+.noMusicSelectedMessage {
+  font-size: x-large;
+  font-weight: 600;
 }

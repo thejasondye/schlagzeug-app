@@ -11,7 +11,7 @@ export default function AudioPlayer(props) {
       <>
         {recordings.map((recording) => {
           return (
-            <Grid container key={recording.title} sx={{ alignItems: 'center' }}>
+            <Grid container className="center" key={recording.title} sx={{ alignItems: 'center' }}>
               <Grid item sm={6}>
                 <Typography color="secondary">
                   {recording.title}
