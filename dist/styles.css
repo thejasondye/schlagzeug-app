@@ -27,7 +27,7 @@ body {
 }
 
 #recording-item {
-  grid: 1fr 1fr / auto;
+  grid: 1fr 1fr / 1fr 1fr;
 }
 
 .recording-title {
