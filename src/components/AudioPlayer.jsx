@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import ReactAudioPlayer from 'react-audio-player';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
 
 export default function AudioPlayer(props) {
 
