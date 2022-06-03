@@ -51,13 +51,11 @@ export default function MusicList(props) {
           {musicList.map((exerpt, index) => {
             return (
               <li className="slide-in-fade-in music-list-item" key={exerpt.title}>
-                <div style={{ width: '250px' }}>
-                  <MusicListItem
-                    index={index}
-                    exerpt={exerpt}
-                    handleListItemClick={handleListItemClick}
-                  />
-                </div>
+                <MusicListItem
+                  index={index}
+                  exerpt={exerpt}
+                  handleListItemClick={handleListItemClick}
+                />
               </li>
             );
           })}

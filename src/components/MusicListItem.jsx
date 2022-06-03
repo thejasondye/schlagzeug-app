@@ -15,14 +15,10 @@ export default function MusicListItem(props) {
   const [shift, setShift] = useState('0px');
 
   return (
-      <Card
+      <div
         id={index}
-        elevation={2}
-        sx={{
-          cursor: 'pointer',
-          p: '8px',
-          transform: `translatex(${shift})`
-        }}
+        class="card1"
+        style={{ padding: '8px', transform: `translatex(${shift})` }}
         onClick={ () =>  handleListItemClick(index) }
         onMouseEnter={ () => setShift('10px') }
         onMouseLeave={ () => setShift('0px') }
@@ -39,6 +35,6 @@ export default function MusicListItem(props) {
         <Typography variant="caption">
           {`${ exerpt.style } ${ exerpt.category }`}
         </Typography>
-      </Card>
+      </div>
   )
 }
