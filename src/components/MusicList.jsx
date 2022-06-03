@@ -50,7 +50,7 @@ export default function MusicList(props) {
         <ul id="music-list" className="container top">
           {musicList.map((exerpt, index) => {
             return (
-              <li className="slide-in-fade-in" key={exerpt.title}>
+              <li className="slide-in-fade-in music-list-item" key={exerpt.title}>
                 <div style={{ width: '250px' }}>
                   <MusicListItem
                     index={index}
