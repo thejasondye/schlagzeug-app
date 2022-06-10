@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ReactAudioPlayer from 'react-audio-player';
 
-export default function AudioPlayer(props) {
+export default function AudioPlayer (props) {
 
   const { recordings } = props;
   if (recordings) {
