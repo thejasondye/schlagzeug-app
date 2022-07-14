@@ -1,11 +1,11 @@
-html {
+body {
   --bg-primary: #073E55;
   --bg-secondary: #306678;
   --text-primary: #9AB3BA;
   --text-warning: #FDCB0B;
 }
 
-html.dark-theme {
+body.dark-theme {
   --bg-primary: #020e13;
   --bg-secondary: #17313a;
   --text-primary: #9AB3BA;
@@ -15,7 +15,8 @@ html.dark-theme {
 body {
   background-color: var(--bg-primary);
   display: grid;
-  font-family: "Avenir", Verdana, Helvetica, Georgia;
+  font-family: Kanit, Avenir, Verdana, Helvetica;
+  font-weight: 400;
 }
 
 h3 {
@@ -30,6 +31,9 @@ ul {
   padding:0;
 }
 
+
+/* utilities */
+
 .container {
   margin: 10px;
 }
@@ -42,12 +46,12 @@ ul {
   padding: 10px;
 }
 
-#recording-item {
-  grid: 1fr 1fr / 1fr 1fr;
+.bold {
+  font-weight: 600;
 }
 
-.recording-title {
-  color: var(--text-primary)
+.light {
+  font-weight: 200;
 }
 
 .center {
@@ -61,6 +65,73 @@ ul {
 
 .top {
   justify-content: start;
+}
+
+// mobile
+@media (max-width: 421px) {
+  #navbar-title {
+    margin: auto;
+  }
+}
+
+
+/* Extra small devices (phones, 600px and down)
+@media only screen and (max-width: 600px) {}
+/* Small devices (portrait tablets and large phones, 600px and up)
+@media only screen and (min-width: 600px) {}
+/* Medium devices (landscape tablets, 768px and up)
+@media only screen and (min-width: 768px) {}
+/* Large devices (laptops/desktops, 992px and up)
+@media only screen and (min-width: 992px) {}
+/* Extra large devices (large laptops and desktops, 1200px and up)
+@media only screen and (min-width: 1200px) {}
+*/
+
+
+#navbar {
+  width: 97vw;
+  height: auto;
+  border-radius: 8px;
+  position: static;
+  background-color: var(--bg-secondary);
+  color: var(--text-warning);
+  grid: repeat(3, 1fr), auto;
+  grid-template-areas:
+    "first second third";
+}
+
+#navbar-title {
+  font-size: 36px;
+  margin: auto;
+  grid-area: first;
+}
+
+#nav-menu-btn {
+  display: grid;
+  font-size: 20px;
+  color: inherit;
+  background-color: inherit;
+  border: none;
+  @media (min-width: 600px) {
+    display: none;
+  }
+}
+
+#nav-menu {
+  position: absolute;
+  height: auto;
+  width: auto;
+  background-color: var(--text-primary);
+  padding: 10px 5px;
+  z-index: 200;
+}
+
+#recording-item {
+  grid: 1fr 1fr / 1fr 1fr;
+}
+
+.recording-title {
+  color: var(--text-primary)
 }
 
 .noMusicSelectedMessage {
@@ -81,6 +152,17 @@ ul {
   width:250px;
   padding-bottom: 8px;
   cursor: pointer;
+}
+
+.music-list-title {
+  margin-top: 0;
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.music-list-text {
+  margin: 0;
+  font-size: 14px;
 }
 
 /*

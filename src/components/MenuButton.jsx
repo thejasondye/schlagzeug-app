@@ -2,27 +2,35 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 export default function MenuButton ({
-  icon_images, clickHandler, id, className
+  icons, handleOpenMenu, handleCloseMenu, id, className, isOpen
 }) {
+  // for a future expansion of changing icons
+  let icon = icons[0];
+  let clickHandler = handleOpenMenu;
+  console.log('icon :', icon);
 
+  if (isOpen) {
+    icon = icons[1];
+    clickHandler = handleCloseMenu;
+  }
 
   return (
-    <button
-      onClick={clickHandler}
-      color="inherit"
-      id={id}
-      className={className}
-    >
-      <img src={icon_images} />
-    </button>
+    // TODO: center this button
+    <div>
+      <button
+        onClick={clickHandler}
+        color="inherit"
+        id={id}
+        className={className}
+      >
+        <i className={icon} />
+      </button>
+    </div>
   );
 };
 
 MenuButton.propTypes = {
-  icon_images: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.arrayOf(PropTypes.string)
-  ]),
+  icons: PropTypes.arrayOf(PropTypes.string),
   clickHandler: PropTypes.func,
   id: PropTypes.string,
   className: PropTypes.string

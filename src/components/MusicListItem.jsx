@@ -1,13 +1,5 @@
 import React, { useState } from 'react';
 import useStore from '../zustandStore';
-import {
-  Box,
-  Grid,
-  Card,
-  CardHeader,
-  CardContent,
-  Typography
-} from '@mui/material';
 
 export default function MusicListItem(props) {
 
@@ -17,24 +9,24 @@ export default function MusicListItem(props) {
   return (
       <div
         id={index}
-        class="card1"
+        className="card1"
         style={{ padding: '8px', transform: `translatex(${shift})` }}
         onClick={ () =>  handleListItemClick(index) }
         onMouseEnter={ () => setShift('10px') }
         onMouseLeave={ () => setShift('0px') }
       >
-        <Typography variant="body1" fontWeight="bold">
+        <p className="music-list-title">
           {exerpt.title}
-        </Typography>
-        <Typography variant="subtitle">
+        </p>
+        <p className="music-list-text">
           {exerpt.instrument}
-        </Typography>
-        <Typography variant="body1">
+        </p>
+        <p className="music-list-text">
           Tempo: {exerpt.tempo}
-        </Typography>
-        <Typography variant="caption">
+        </p>
+        <p className="music-list-text">
           {`${ exerpt.style } ${ exerpt.category }`}
-        </Typography>
+        </p>
       </div>
   )
 }
