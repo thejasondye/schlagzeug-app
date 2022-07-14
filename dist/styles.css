@@ -1,5 +1,4 @@
 
-
 body {
   --bg-primary: #073E55;
   --bg-secondary: #306678;
@@ -13,6 +12,9 @@ body.dark-theme {
   --text-primary: #9AB3BA;
   --text-warning: #c0a94d;
 }
+
+
+// ELEMENT STYLES
 
 body {
   background-color: var(--bg-primary);
@@ -29,8 +31,8 @@ h3 {
 ul {
   list-style-type: none;
   list-style-position:inside;
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
 }
 
 
@@ -70,11 +72,11 @@ ul {
 }
 
 // mobile
-@media (max-width: 421px) {
+/* @media (max-width: 421px) {
   #navbar-title {
     margin: auto;
   }
-}
+} */
 
 
 /* Extra small devices (phones, 600px and down)
@@ -114,7 +116,9 @@ ul {
   color: inherit;
   background-color: inherit;
   border: none;
-  @media (min-width: 600px) {
+}
+@media (min-width: 600px) {
+  #nav-menu-btn {
     display: none;
   }
 }
@@ -127,6 +131,28 @@ ul {
   padding: 10px 5px;
   z-index: 200;
 }
+
+.nav-menu-item {
+  display: none;
+  color: var(--text-warning);
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 300;
+}
+/* @media (min-width: 600px) {
+  .nav-menu-item {
+    display: grid;
+  }
+} */
+
+.navbar-link {
+  background-color: '#9AB3BA';
+}
+
+
+/*
+  // MUSIC DISPLAY
+*/
 
 #recording-item {
   grid: 1fr 1fr / 1fr 1fr;

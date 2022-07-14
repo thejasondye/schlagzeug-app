@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+
 import MenuButton from './MenuButton';
 import Menu from './Menu';
 
@@ -8,7 +9,6 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-// import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
@@ -42,8 +42,8 @@ export default function NavBar () {
   const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
   return (
-    <div id="navbar" className="card2 container center">
 
+    <div id="navbar" className="card2 container center">
       {/*
         TODO: Make this title shift to center and resize for mobile
           instead of rendering two titles
@@ -62,7 +62,7 @@ export default function NavBar () {
           handleCloseMenu={handleCloseNavMenu}
           id={"nav-menu-btn"}
           className={null}
-          isOpen={anchorElNav}
+          isOpen={Boolean(anchorElNav)}
         />
 
         {/*
@@ -80,7 +80,7 @@ export default function NavBar () {
             vertical: 'top',
             horizontal: 'left',
           }}
-          open={Boolean(anchorElNav)}
+          isOpen={Boolean(anchorElNav)}
           onClose={handleCloseNavMenu}
           // sx={{
           //   display: { xs: 'block', md: 'none' }
@@ -102,7 +102,8 @@ export default function NavBar () {
       </Typography>
 
       {/* Button Nav Links */}
-      <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+
+      {/* <div className="box">
         {pages.map((page) => (
           <Link to={page.link} key={page.name} style={{ textDecoration: 'none' }}>
             <Button
@@ -113,7 +114,21 @@ export default function NavBar () {
             </Button>
           </Link>
         ))}
-      </Box>
+      </div> */}
+
+      {pages.map((page) => (
+        <div
+          id="navbar-link"
+          key={page.name}
+          onClick={handleCloseNavMenu}
+          onBlur={handleCloseNavMenu}
+          style={{ backgroundColor: '#9AB3BA' }}
+        >
+          <Link to={page.link} style={{ textDecoration: 'none', color: '#FDCB0B' }}>
+            {page.name}
+          </Link>
+        </div>
+      ))}
 
       {/* Viewable on all media sizes */}
       {/* User Settings menu */}
