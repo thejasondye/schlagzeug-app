@@ -111,16 +111,20 @@ Extra large devices (large laptops and desktops, 1200px and up)
   padding: 10px 15px;
   background-color: var(--bg-secondary);
   color: var(--text-warning);
-  grid: repeat(3, 1fr), auto;
-  grid-template-areas:
-    "first second third";
+  grid: [start] "first second third" [end]
+        / 1fr 1fr 1fr;
 }
 
 
 #navbar-title {
   font-size: 36px;
   margin: auto;
-  grid-area: first;
+  grid-area: second;
+}
+@media (min-width: 600px) {
+  #navbar-title {
+    grid-area: first;
+  }
 }
 
 #nav-menu-btn {
@@ -182,6 +186,26 @@ Extra large devices (large laptops and desktops, 1200px and up)
   font-weight: 300;
 }
 
+/*
+  // LANDING PAGE (HOME)
+*/
+
+.carousel-cntnr {
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.carousel-content {
+  width: 100%;
+  height: 100%;
+  white-space: nowrap;
+  transition: transform 0.3s;
+}
+
+.carousel-image {
+  width: 100%;
+  height: 100%;
+}
 
 /*
   // MUSIC DISPLAY
@@ -234,25 +258,25 @@ Extra large devices (large laptops and desktops, 1200px and up)
   box-shadow: 0px 1.5px 4px -1.5px #000;
   background-color: #fff;
   border: 2px;
-  border-radius: 4px;
+  border-radius: 5px;
 }
 .card2 {
   box-shadow: 0px 2px 8px -2px #000d;
   background-color: #fff;
   border: 2px;
-  border-radius: 4px;
+  border-radius: 5px;
 }
 .card3 {
   box-shadow: 0px 2.5px 12px -3.5px #000d;
   background-color: #fff;
   border: 2px;
-  border-radius: 4px;
+  border-radius: 5px;
 }
 .card4 {
   box-shadow: 0px 2.5px 18px -3.5px #000d;
   background-color: #fff;
   border: 2px;
-  border-radius: 4px;
+  border-radius: 5px;
 }
 
 

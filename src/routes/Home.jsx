@@ -6,8 +6,6 @@ import MusicList from '../components/MusicList';
 import AudioPlayer from '../components/AudioPlayer';
 import NavBar from '../components/NavBar';
 
-import { Typography, Container, Grid, Box, Paper, Button } from '@mui/material';
-
 
 export default function Home() {
 
@@ -36,40 +34,29 @@ export default function Home() {
   });
 
   return (
-    <Grid container sx={{
+    <div className="container" style={{
       height: 'auto',
       width: 'auto',
-      m: '10%'
+      margin: '10%'
       }}
     >
-      <Box
-        sx={{
-          overflow: 'hidden',
-          borderRadius: '10px'
-        }}
-      >
-        <Box
-          sx={{
-            transform: `translateX(-${index * 100}%)`,
-            whiteSpace: 'nowrap',
-            transition: 'transform 0.3s'
-          }}
+      <div className="carousel-cntnr card2">
+        <div
+          className="carousel-content"
+          style={{ transform: `translateX(-${index * 100}%)` }}
         >
           {images.map(image => {
             return (
-              <Box
-                sx={{
-                  display: 'inline-flex',
-                  width: '100%'
-                }}
+              <img
+                className="carousel-image"
                 key={image}
-              >
-                <img src={image} alt="percussion images" width="100%" height="100%" />
-              </Box>
+                src={image}
+                alt="percussion images"
+              />
             )}
           )}
-        </Box>
-      </Box>
-    </Grid>
+        </div>
+      </div>
+    </div>
   );
 }
