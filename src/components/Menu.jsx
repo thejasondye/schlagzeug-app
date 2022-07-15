@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 
+// TODO: "nav-menu-item" classname and style attribute makes this non-reusable
+
 export default function Menu ({
-  id, className, anchorEl, anchorOrigin, transformOrigin, isOpen, onClose, items
+  id, anchorEl, anchorOrigin, transformOrigin, isOpen, onClose, items
 }) {
 
   let display = anchorEl ? 'block' : 'none';
@@ -17,16 +18,17 @@ export default function Menu ({
   return (
     <div id={id} style={divStyle}>
       {items.map((item) => (
-            <div
-              key={item.name}
-              onClick={onClose}
-              style={{ backgroundColor: '#9AB3BA' }}
-            >
-              <Link to={item.link}>
-                <div className="nav-menu-item">{item.name}</div>
-              </Link>
-            </div>
-          ))}
+        <div
+          className="nav-menu-item"
+          key={item.name}
+          onClick={onClose}
+          style={{ backgroundColor: '#9AB3BA' }}
+        >
+          <Link to={item.link}>
+            {item.name}
+          </Link>
+        </div>
+      ))}
     </div>
   );
 };

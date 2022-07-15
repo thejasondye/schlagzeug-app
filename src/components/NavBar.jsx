@@ -77,7 +77,7 @@ export default function NavBar () {
             vertical: 'bottom'
           }}
           transformOrigin={{
-            vertical: 'top',
+            vertical: 'bottom',
             horizontal: 'left',
           }}
           isOpen={Boolean(anchorElNav)}
@@ -120,9 +120,6 @@ export default function NavBar () {
         <div
           id="navbar-link"
           key={page.name}
-          onClick={handleCloseNavMenu}
-          onBlur={handleCloseNavMenu}
-          style={{ backgroundColor: '#9AB3BA' }}
         >
           <Link to={page.link} style={{ textDecoration: 'none', color: '#FDCB0B' }}>
             {page.name}

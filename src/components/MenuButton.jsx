@@ -7,7 +7,6 @@ export default function MenuButton ({
   // for a future expansion of changing icons
   let icon = icons[0];
   let clickHandler = handleOpenMenu;
-  console.log('icon :', icon);
 
   if (isOpen) {
     icon = icons[1];

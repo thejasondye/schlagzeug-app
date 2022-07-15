@@ -1,3 +1,6 @@
+/*
+  // CUSTOM PROPERTIES
+*/
 
 body {
   --bg-primary: #073E55;
@@ -13,8 +16,9 @@ body.dark-theme {
   --text-warning: #c0a94d;
 }
 
-
-// ELEMENT STYLES
+/*
+  // ELEMENT STYLES
+*/
 
 body {
   background-color: var(--bg-primary);
@@ -71,7 +75,7 @@ ul {
   justify-content: start;
 }
 
-// mobile
+
 /* @media (max-width: 421px) {
   #navbar-title {
     margin: auto;
@@ -79,15 +83,22 @@ ul {
 } */
 
 
-/* Extra small devices (phones, 600px and down)
+/*
+Extra small devices (phones, 600px and down)
 @media only screen and (max-width: 600px) {}
-/* Small devices (portrait tablets and large phones, 600px and up)
+*/
+/*
+ Small devices (portrait tablets and large phones, 600px and up)
 @media only screen and (min-width: 600px) {}
+*/
 /* Medium devices (landscape tablets, 768px and up)
 @media only screen and (min-width: 768px) {}
+*/
 /* Large devices (laptops/desktops, 992px and up)
 @media only screen and (min-width: 992px) {}
-/* Extra large devices (large laptops and desktops, 1200px and up)
+*/
+/*
+Extra large devices (large laptops and desktops, 1200px and up)
 @media only screen and (min-width: 1200px) {}
 */
 
@@ -133,20 +144,19 @@ ul {
 }
 
 .nav-menu-item {
-  display: none;
   color: var(--text-warning);
   text-decoration: none;
   font-size: 20px;
   font-weight: 300;
 }
-/* @media (min-width: 600px) {
+/* @media (max-width: 600px) {
   .nav-menu-item {
     display: grid;
   }
 } */
 
-.navbar-link {
-  background-color: '#9AB3BA';
+#navbar-link {
+
 }
 
 
