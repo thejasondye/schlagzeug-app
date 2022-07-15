@@ -5,9 +5,6 @@ import useStore from '../zustandStore';
 import MusicList from '../components/MusicList';
 import AudioPlayer from '../components/AudioPlayer';
 
-import { Typography, Container, Grid, Box, Paper, Button, Link } from '@mui/material';
-import DownloadIcon from '@mui/icons-material/Download';
-
 
 export default function Music(props) {
 
@@ -28,75 +25,57 @@ export default function Music(props) {
       })
   }, []);
 
+  // TODO: NEED TO IMPLEMENT CORRECT GRID SETUP
 
   return (
 
       !isLoading &&
-        <Grid
-          container
-          direction="row"
-          sx={{ padding: '20px 20px', height: '90vh' }}
+        <div
+          className="music-cntnr"
+          style={{
+            padding: '20px 20px',
+            height: '90vh'
+          }}
         >
-
-          <Grid
-            container
-            item
-            sm={3}
-          >
+          <div className="container" style={{ width: '25%' }}>
             <MusicList />
-          </Grid>
+          </div>
 
-          { currentMusic &&
-            <Grid container p={'7px 0 0 15px'} item sm={9} sx={{ height: '100%' }}>
+          {currentMusic &&
+            <div className="music-media container">
+              <div className="music-disp-cntnr item">
+                <img
+                  className="music-display card3"
+                  src={currentMusic.url}
+                  width="100%"
+                  height="100%"
+                />
+              </div>
 
-              <Grid
-                item
-                sm={12}
-                sx={{
-                  overflow: 'scroll',
-                  height: '70%'
-                }}
-              >
-                <Paper sx={{ padding: '20px' }} elevation={8}>
-                  <img src={ currentMusic.url } width="100%" height="100%" />
-                </Paper>
-              </Grid>
-              <Grid item sm={12} p={'5px 0 5px'} >
-                <Button variant="contained" endIcon={<DownloadIcon />} href={currentMusic.url} download>
+            {/* TODO: DOWNLOAD SHEET MUSIC BUTTON / ICON */}
+
+              {/* <div style={ padding: '5px 0 5px' }>
+                <button variant="contained" endIcon={<DownloadIcon />} href={currentMusic.url} download>
                   Download Sheet Music
-                </Button>
-              </Grid>
-              <Grid item sm={12} mt="15px" sx={{ height: '30%' }}>
-                <AudioPlayer recordings={ null || currentMusic.recordings } />
-              </Grid>
+                </button>
+              </div> */}
 
-            </Grid>
+              <div className="audio-player">
+                <AudioPlayer recordings={ null || currentMusic.recordings } />
+              </div>
+            </div>
           }
 
           {!currentMusic &&
-            <Grid
-              item
-              sm={9}
-              display="flex"
-              m="auto"
-              alignContent="center"
-              justifyContent="center"
-            >
-              <Box
-                sx={{
-                  backgroundColor: '#ede9f7',
-                  borderRadius: '5px',
-                  padding: '5px 16px',
-                  width: '50%'
-                }}
-              >
-                <Typography variant="h5" color="primary" fontWeight="bold" align="center">
+            <div className="music-media-blank">
+              <div className="no-music-cntnr">
+                <h5 className="no-music-selected-msg">
                   Please make a selection from the Collection List
-                </Typography>
-              </Box>
-            </Grid>
+                </h5>
+              </div>
+            </div>
           }
 
-        </Grid>
+        </div>
   );
 }
