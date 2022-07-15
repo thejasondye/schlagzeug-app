@@ -108,12 +108,14 @@ Extra large devices (large laptops and desktops, 1200px and up)
   height: auto;
   border-radius: 8px;
   position: static;
+  padding: 10px 15px;
   background-color: var(--bg-secondary);
   color: var(--text-warning);
   grid: repeat(3, 1fr), auto;
   grid-template-areas:
     "first second third";
 }
+
 
 #navbar-title {
   font-size: 36px;
@@ -143,20 +145,41 @@ Extra large devices (large laptops and desktops, 1200px and up)
   z-index: 200;
 }
 
-.nav-menu-item {
+#nav-menu>div {
   color: var(--text-warning);
   text-decoration: none;
   font-size: 20px;
   font-weight: 300;
 }
-/* @media (max-width: 600px) {
-  .nav-menu-item {
+
+.navbar-link {
+  display: none;
+}
+@media (min-width: 600px) {
+  .navbar-link {
     display: grid;
   }
-} */
+}
 
-#navbar-link {
+#user-avatar {
+  height: 30px;
+  width: 30px;
+}
 
+#user-menu {
+  position: absolute;
+  height: auto;
+  width: auto;
+  background-color: var(--text-primary);
+  padding: 10px 5px;
+  z-index: 201;
+}
+
+#user-menu>div {
+  color: var(--text-warning);
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 300;
 }
 
 

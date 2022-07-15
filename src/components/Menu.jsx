@@ -22,7 +22,6 @@ export default function Menu ({
           className="nav-menu-item"
           key={item.name}
           onClick={onClose}
-          style={{ backgroundColor: '#9AB3BA' }}
         >
           <Link to={item.link}>
             {item.name}
