@@ -22,25 +22,6 @@ export default function MusicList(props) {
     filterMusicList(e.target.value);
   };
 
-  /*
-    <FormControl error fullWidth mb="15px">
-      <FormHelperText>Instrument</FormHelperText>
-      <InputLabel color="secondary" id="instrument-select">Instrument</InputLabel>
-      <Select
-        color="secondary"
-        labelId="instrument-filter"
-        id="instrument-filter"
-        value={instrument}
-        label="Instrument"
-        onChange={handleInstrumentSelectChange}
-      >
-        <MenuItem value={'Marimba'}>Marimba</MenuItem>
-        <MenuItem value={'Snare Drum'}>Snare Drum</MenuItem>
-        <MenuItem value={'Ensemble'}>Ensemble</MenuItem>
-      </Select>
-    </FormControl>
-  */
-
   return (
     <div id="music-list-cntnr" className="container">
       <div className="box">
