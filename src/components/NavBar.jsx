@@ -1,169 +1,131 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
+import MenuButton from './MenuButton';
+import Menu from './Menu';
 
 
-const pages = [
-  {name: 'Home', link: '/'},
-  {name: 'Music', link: 'music'},
-  {name: 'Blog', link: 'blog'}
-];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-
-const NavBar = () => {
+export default function NavBar () {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
-
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
 
+  const pages = [
+    {name: 'Home', link: '/'},
+    {name: 'Music', link: 'music'},
+    {name: 'Blog', link: 'blog'}
+  ];
+  const settings = [
+    {name: 'Profile', link: '/'},
+    {name: 'Account', link: '/'},
+    {name: 'Dashboard', link: '/'},
+    {name: 'Logout', link: '/'}
+  ];
+
   return (
-    <AppBar
-      position="static"
-      sx={{
-        width: '99vw',
-        height: 'auto',
-        borderRadius: '8px',
-        backgroundColor: '#306678',
-        color: 'primary.contrastText'
-      }}
-    >
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Typography
-            variant="h3"
-            noWrap
-            component="div"
-            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
-          >
-            Schlagzeug
-          </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+    <div id="navbar" className="card2 container center">
+      {/*
+        TODO: Make this title shift to center and resize for mobile
+          instead of rendering two titles
+      */}
+      <span id="navbar-title">
+        Schlagzeug
+      </span>
 
-            {/* Burger Icon */}
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
+      {/* Needs to be viewable on mobile and tablet sizes only */}
 
-            {/* Popup menu (sm/xs) */}
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' }
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page.name} onClick={handleCloseNavMenu} sx={{ backgroundColor: '#9AB3BA' }}>
-                  <Link to={page.link} style={{ textDecoration: 'none', color: '#FDCB0B' }}>
-                    <Typography textAlign="center">{page.name}</Typography>
-                  </Link>
-                </MenuItem>
-              ))}
-            </Menu>
+      <div id="nav-menu-cntnr" className="box">
+        <MenuButton
+          icons={['fa-solid fa-bars fa-lg', 'fa-solid fa-xmark fa-lg']}
+          handleOpenMenu={handleOpenNavMenu}
+          handleCloseMenu={handleCloseNavMenu}
+          id={"nav-menu-btn"}
+          className={null}
+          isOpen={Boolean(anchorElNav)}
+        />
 
-          </Box>
+        {/*
+          Popup Menu container
+          -- move this to reusable component --
+        */}
+        <Menu
+          id="nav-menu"
+          anchorEl={anchorElNav}
+          anchorOrigin={{
+            horizontal: 'left',
+            vertical: 'bottom'
+          }}
+          transformOrigin={{
+            vertical: 'bottom',
+            horizontal: 'right',
+          }}
+          isOpen={Boolean(anchorElNav)}
+          onClose={handleCloseNavMenu}
+          // sx={{
+          //   display: { xs: 'block', md: 'none' }
+          // }}
+          items={pages}
+        />
 
-          {/* Title */}
+      </div>
 
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
-          >
-            Schlagzeug
-          </Typography>
+      {/* Button Nav Links */}
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Link to={page.link} key={page.name} style={{ textDecoration: 'none' }}>
-                <Button
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: '#FDCB0B', display: 'block' }}
-                >
-                  <Typography textAlign="center">{page.name}</Typography>
-                </Button>
-              </Link>
-            ))}
-          </Box>
+      {pages.map((page) => (
+        <div
+          className="navbar-link"
+          key={page.name}
+        >
+          <Link to={page.link} style={{ textDecoration: 'none', color: '#FDCB0B' }}>
+            {page.name}
+          </Link>
+        </div>
+      ))}
 
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
+      {/* Viewable on all media sizes */}
+      {/* User Settings menu */}
+      <div
+        className="user-menu"
+        onClick={anchorElUser ? handleCloseUserMenu : handleOpenUserMenu}
+        style={{ padding: 0 }}
+      >
+        <img
+          id="user-avatar"
+          alt="Remy Sharp"
+          src="/lib/images/favicon.ico"
+        />
+      </div>
+      <Menu
+        // sx={{ mt: '45px' }}
+        id="user-menu"
+        anchorEl={anchorElUser}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+        onClick={handleCloseUserMenu}
+        keepMounted
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+        open={Boolean(anchorElUser)}
+        onClose={handleCloseUserMenu}
+        items={settings}
+      />
+    </div>
   );
 };
-export default NavBar;
-
