@@ -11,9 +11,8 @@ import Music from './routes/Music';
 import Blog from './routes/Blog';
 import Home from './routes/Home';
 
-import { Grid, Typography } from '@mui/material';
-
 const root = document.getElementById('app');
+
 render(
   <BrowserRouter>
     <Routes>
@@ -24,11 +23,11 @@ render(
         <Route
           path="*"
           element={
-            <Grid style={{ padding: "1rem" }}>
-              <Typography variant="h2">
+            <div style={{ padding: "1rem" }}>
+              <h2>
                 There's nothing here!
-              </Typography>
-            </Grid>
+              </h2>
+            </div>
           }
         />
       </Route>

@@ -11,7 +11,7 @@ import NavBar from './components/NavBar';
 export default function App () {
 
   return (
-    <div style={{ height: '100vh', width: '97vw', margin: '0px 10px' }}>
+    <div style={{ height: '100vh', width: '97vw', padding: '0px 10px' }}>
       <NavBar />
       <Outlet />
     </div>
