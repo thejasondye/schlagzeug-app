@@ -21,8 +21,8 @@ body.dark-theme {
 */
 
 body {
+  margin: 12px;
   background-color: var(--bg-primary);
-  display: grid;
   font-family: Kanit, Avenir, Verdana, Helvetica;
   font-weight: 400;
 }
@@ -104,21 +104,19 @@ Extra large devices (large laptops and desktops, 1200px and up)
 
 
 #navbar {
-  width: 97vw;
-  height: auto;
+  display: grid;
+  height: 50px;
   border-radius: 8px;
   position: static;
   padding: 10px 15px;
   background-color: var(--bg-secondary);
   color: var(--text-warning);
-  grid: [start] "first second third" [end]
-        / 1fr 1fr 1fr;
+  grid: "first second third" / 2fr 3fr 1fr;
 }
 
-
 #navbar-title {
+  display: grid;
   font-size: 36px;
-  margin: auto;
   grid-area: second;
 }
 @media (min-width: 600px) {
@@ -156,18 +154,28 @@ Extra large devices (large laptops and desktops, 1200px and up)
   font-weight: 300;
 }
 
-.navbar-link {
+.navbar-links {
   display: none;
+  justify-items: end;
+  grid: auto-flow / 3fr 1fr 1fr;
 }
+
 @media (min-width: 600px) {
-  .navbar-link {
+  .navbar-links {
     display: grid;
+    grid-area: second;
   }
 }
 
 #user-avatar {
   height: 30px;
   width: 30px;
+}
+
+#user-menu-bttn {
+  display: grid;
+  grid-area: third;
+  justify-content: right;
 }
 
 #user-menu {

@@ -11,6 +11,7 @@ import Music from './routes/Music';
 import Blog from './routes/Blog';
 import Home from './routes/Home';
 
+
 const root = document.getElementById('app');
 
 render(
@@ -21,7 +22,7 @@ render(
         <Route path="music" element={<Music />} />
         <Route path="blog" element={<Blog />} />
         <Route
-          path="*"
+          path="*" // this default path is not working
           element={
             <div style={{ padding: "1rem" }}>
               <h2>
