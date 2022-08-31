@@ -10,9 +10,9 @@ export default function Blog(props) {
 
   return (
 
-    <div className="container">
+    <div className="blog-cntnr container">
       <div className="item">
-        <h2 variant="h2">This is the Blog Page</h2>
+        <h2>This is the Blog Page</h2>
       </div>
     </div>
   );

@@ -37,9 +37,7 @@ export default function Music(props) {
             height: '90vh'
           }}
         >
-          <div className="container" style={{ width: '25%' }}>
-            <MusicList />
-          </div>
+          <MusicList />
 
           {currentMusic &&
             <div className="music-media container">

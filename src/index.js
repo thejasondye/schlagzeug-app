@@ -34,4 +34,5 @@ render(
       </Route>
     </Routes>
   </BrowserRouter>
-  , root);
+  , root
+);
