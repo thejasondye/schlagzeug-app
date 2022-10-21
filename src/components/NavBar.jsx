@@ -33,6 +33,7 @@ export default function NavBar () {
     {name: 'Dashboard', link: '/'},
     {name: 'Logout', link: '/'}
   ];
+  const icons = ['fa-solid fa-bars fa-lg', 'fa-solid fa-xmark fa-lg'];
 
   return (
 
@@ -49,7 +50,7 @@ export default function NavBar () {
 
       <div id="nav-menu-cntnr" className="box">
         <MenuButton
-          icons={['fa-solid fa-bars fa-lg', 'fa-solid fa-xmark fa-lg']}
+          icons={icons}
           handleOpenMenu={handleOpenNavMenu}
           handleCloseMenu={handleCloseNavMenu}
           id={"nav-menu-btn"}
