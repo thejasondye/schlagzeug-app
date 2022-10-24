@@ -41,9 +41,9 @@ export default function Music(props) {
 
           {currentMusic &&
             <div className="music-media container">
-              <div className="music-disp-cntnr item">
+              <div className="music-disp-cntnr card3 item">
                 <img
-                  className="music-display card3"
+                  className="music-display"
                   src={currentMusic.url}
                   width="100%"
                   height="100%"
