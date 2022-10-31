@@ -36,7 +36,7 @@ export default function NavBar () {
 
   return (
 
-    <div id="navbar" className="card2 container center">
+    <div id="navbar" className="card2 center">
       {/*
         TODO: Make this title shift to center and resize for mobile
           instead of rendering two titles
@@ -109,7 +109,6 @@ export default function NavBar () {
         />
       </div>
       <Menu
-        // sx={{ mt: '45px' }}
         id="user-menu"
         anchorEl={anchorElUser}
         anchorOrigin={{

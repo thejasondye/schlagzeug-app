@@ -1,0 +1,21 @@
+body {
+  background-color: var(--bg-primary);
+  font-family: Kanit, Avenir, Verdana, Helvetica;
+  font-weight: 400;
+}
+
+h3 {
+  display: grid;
+  color: var(--text-primary);
+}
+
+ul {
+  list-style-type: none;
+  list-style-position:inside;
+  margin: 0;
+  padding: 0;
+}
+
+div {
+  display: grid;
+}
