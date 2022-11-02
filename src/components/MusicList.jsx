@@ -24,24 +24,22 @@ export default function MusicList(props) {
 
   return (
     <div id="music-list-cntnr" className="container">
-      <div className="box">
-        <div id="music_list-hdr-txt">
-          <h3 className="center">Collection Title</h3>
-        </div>
-        <ul id="music-list" className="container top">
-          {musicList.map((exerpt, index) => {
-            return (
-              <li className="slide-in-fade-in music-list-item" key={exerpt.title}>
-                <MusicListItem
-                  index={index}
-                  exerpt={exerpt}
-                  handleListItemClick={handleListItemClick}
-                />
-              </li>
-            );
-          })}
-        </ul>
+      <div id="music_list-hdr-txt">
+        <h3 className="center">Collection Title</h3>
       </div>
+      <ul id="music-list" className="container top">
+        {musicList.map((exerpt, index) => {
+          return (
+            <li className="slide-in-fade-in music-list-item" key={exerpt.title}>
+              <MusicListItem
+                index={index}
+                exerpt={exerpt}
+                handleListItemClick={handleListItemClick}
+              />
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 }

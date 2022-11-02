@@ -13,7 +13,9 @@ export default function App () {
   return (
     <div id="main">
       <NavBar />
-      <Outlet />
+      <div id="outlet">
+        <Outlet />
+      </div>
     </div>
   );
 }

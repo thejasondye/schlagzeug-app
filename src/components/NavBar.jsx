@@ -70,6 +70,7 @@ export default function NavBar () {
     {name: 'Dashboard', link: '/'},
     {name: 'Logout', link: '/'}
   ];
+  const icons = ['fa-solid fa-bars fa-lg', 'fa-solid fa-xmark fa-lg'];
 
   return (
 
@@ -134,7 +135,6 @@ export default function NavBar () {
       </div>
 
 
-
       {/* Viewable on all media sizes */}
       {/* User Settings menu */}
       <div
@@ -151,6 +151,7 @@ export default function NavBar () {
       </div>
       <Menu
         id="user-menu"
+        className="card1"
         anchorEl={anchorElUser}
         anchorOrigin={userMenuOffset}
         onClick={handleCloseUserMenu}

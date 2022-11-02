@@ -18,7 +18,8 @@ export default function Home() {
   const [index, setIndex] = useState(0);
 
   const nextImage = () => {
-    let next = index === images.length - 1 ? 0 : index + 1;
+    const _index = Number(index);
+    const next = _index === images.length - 1 ? 0 : _index + 1;
     setIndex(next);
   };
 
