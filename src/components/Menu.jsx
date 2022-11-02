@@ -9,8 +9,6 @@ export default function Menu ({
   id, anchorEl, anchorOrigin, transformOrigin, isOpen, onClose, items
 }) {
   const [menuOffset, setMenuOffset] = useState(null);
-  console.log('menuOffset :', menuOffset);
-  const menu = useRef(null);
 
   const display = anchorEl ? 'block' : 'none';
   const divStyle = {
@@ -21,7 +19,6 @@ export default function Menu ({
   return (
     <div
       id={id}
-      ref={menu}
       style={divStyle}
     >
       {items.map((item) => (

@@ -10,29 +10,42 @@ export default function NavBar () {
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [navMenuOffset, setNavMenuOffset] = useState(null);
   const [userMenuOffset, setUserMenuOffset] = useState(null);
+  const [isDesktop, setIsDesktop] = useState(
+    window.matchMedia("(min-width: 600px)").matches
+  );
 
   const navMenu = useRef(null);
   const userMenu = useRef(null);
 
-  const [isDesktop, setIsDesktop] = useState(
-    window.matchMedia("(min-width: 600px)").matches
-  );
-  const getRekt = (el) => el.getBoundingClientRect();
+  const getRekt = el => el.getBoundingClientRect();
+
+  // okay, so this poses a problem
+  // if we don't conditionally run the code for the navMenu, then the useEffect()
+  // below will be broken for non-mobile sizes
+  // consider switching back to using CSS for the change if possible, or
+  // we'll just need to stick to a separate conditional useEffect for the navMenu
+
+  // it turns out, you can't conditionally render hooks because react counts how
+  // many there should be between renders
+
 
   useEffect(() => {
     window.matchMedia("(min-width: 600px)")
-      .addEventListener('change', e => setIsDesktop((e.matches )));
-    const navRect = getRekt(navMenu.current);
-    setNavMenuOffset({
-      top: navRect.bottom + window.scrollX,
-      left: navRect.right + window.scrollY
-    });
+      .addEventListener('change', e => setIsDesktop(e.matches));
     const userRect = getRekt(userMenu.current);
     setUserMenuOffset({
       top: userRect.bottom + window.scrollX,
       left: userRect.left + window.scrollY
     });
+    if (!isDesktop) {
+      const navRect = getRekt(navMenu.current);
+      setNavMenuOffset({
+        top: navRect.bottom + window.scrollX,
+        left: navRect.right + window.scrollY
+      });
+    }
   }, []);
+
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
