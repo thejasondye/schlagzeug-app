@@ -9,7 +9,7 @@ export default function MusicListItem(props) {
   return (
       <div
         id={index}
-        className="card1"
+        className="music-list-card card1"
         style={{ padding: '8px', transform: `translatex(${shift})` }}
         onClick={ () =>  handleListItemClick(index) }
         onMouseEnter={ () => setShift('10px') }

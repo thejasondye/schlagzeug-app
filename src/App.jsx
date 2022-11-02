@@ -11,9 +11,11 @@ import NavBar from './components/NavBar';
 export default function App () {
 
   return (
-    <div style={{ height: '100vh', width: '97vw', padding: '0px 10px' }}>
+    <div id="page-cntnr">
       <NavBar />
-      <Outlet />
+      <div id="outlet">
+        <Outlet />
+      </div>
     </div>
   );
 }

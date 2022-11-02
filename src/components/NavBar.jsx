@@ -33,6 +33,7 @@ export default function NavBar () {
     {name: 'Dashboard', link: '/'},
     {name: 'Logout', link: '/'}
   ];
+  const icons = ['fa-solid fa-bars fa-lg', 'fa-solid fa-xmark fa-lg'];
 
   return (
 
@@ -41,15 +42,15 @@ export default function NavBar () {
         TODO: Make this title shift to center and resize for mobile
           instead of rendering two titles
       */}
-      <span id="navbar-title">
+      <div id="navbar-title">
         Schlagzeug
-      </span>
+      </div>
 
       {/* Needs to be viewable on mobile and tablet sizes only */}
 
       <div id="nav-menu-cntnr" className="box">
         <MenuButton
-          icons={['fa-solid fa-bars fa-lg', 'fa-solid fa-xmark fa-lg']}
+          icons={icons}
           handleOpenMenu={handleOpenNavMenu}
           handleCloseMenu={handleCloseNavMenu}
           id={"nav-menu-btn"}
@@ -63,6 +64,7 @@ export default function NavBar () {
         */}
         <Menu
           id="nav-menu"
+          className="card1"
           anchorEl={anchorElNav}
           anchorOrigin={{
             horizontal: 'left',
@@ -74,31 +76,29 @@ export default function NavBar () {
           }}
           isOpen={Boolean(anchorElNav)}
           onClose={handleCloseNavMenu}
-          // sx={{
-          //   display: { xs: 'block', md: 'none' }
-          // }}
           items={pages}
         />
 
       </div>
 
       {/* Button Nav Links */}
-
-      {pages.map((page) => (
-        <div
-          className="navbar-link"
-          key={page.name}
-        >
-          <Link to={page.link} style={{ textDecoration: 'none', color: '#FDCB0B' }}>
-            {page.name}
-          </Link>
-        </div>
-      ))}
+      <div className="navbar-links">
+        {pages.map((page) => (
+          <div
+            className="navbar-link"
+            key={page.name}
+          >
+            <Link to={page.link} style={{ textDecoration: 'none', color: '#FDCB0B' }}>
+              {page.name}
+            </Link>
+          </div>
+        ))}
+      </div>
 
       {/* Viewable on all media sizes */}
       {/* User Settings menu */}
       <div
-        className="user-menu"
+        id="user-menu-bttn"
         onClick={anchorElUser ? handleCloseUserMenu : handleOpenUserMenu}
         style={{ padding: 0 }}
       >
@@ -111,6 +111,7 @@ export default function NavBar () {
       <Menu
         // sx={{ mt: '45px' }}
         id="user-menu"
+        className="card1"
         anchorEl={anchorElUser}
         anchorOrigin={{
           vertical: 'top',
