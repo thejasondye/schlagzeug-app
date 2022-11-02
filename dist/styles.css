@@ -4,10 +4,14 @@
 }
 
 .carousel-content {
-  width: 100%;
+  grid-template-columns: 100% 100% 100%;
+  width: 102%;
   height: 100%;
   white-space: nowrap;
   transition: transform 0.3s;
+}
+.carousel-content img {
+  display: grid;
 }
 
 .carousel-image {
@@ -142,21 +146,34 @@ div {
   height: auto;
   border-radius: 8px;
   position: static;
-  padding: 10px 15px;
+  padding: 15px 25px;
   background-color: var(--bg-secondary);
   color: var(--text-warning);
   grid: [start] "first second third" [end]/1fr 1fr 1fr;
 }
+@media (min-width: 600px) {
+  #navbar {
+    grid: [start] "first second third" [end]/6fr 2fr 1fr;
+  }
+}
 
 #navbar-title {
-  font-size: 36px;
-  margin: auto;
   grid-area: second;
+  align-content: end;
+}
+#navbar-title div {
+  display: grid;
+  font-size: 36px;
 }
 @media (min-width: 600px) {
   #navbar-title {
     grid-area: first;
   }
+}
+
+#nav-menu-cntnr {
+  grid-area: first;
+  justify-content: start;
 }
 
 #nav-menu {
@@ -175,30 +192,31 @@ div {
 }
 
 #nav-menu-btn {
-  display: grid;
   font-size: 20px;
   color: inherit;
   background-color: inherit;
   border: none;
 }
-@media (min-width: 600px) {
-  #nav-menu-btn {
-    display: none;
-  }
+
+#navbar-links {
+  grid-area: second;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: end;
+  align-items: center;
 }
 
 .navbar-link {
-  display: none;
+  padding: 0 2px;
 }
 
-@media (min-width: 600px) {
-  .navbar-link {
-    display: grid;
-  }
-}
 #user-avatar {
   height: 30px;
   width: 30px;
+}
+
+.user-menu-icon {
+  justify-items: end;
+  align-items: center;
 }
 
 #user-menu {

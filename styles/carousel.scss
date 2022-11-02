@@ -4,10 +4,14 @@
 }
 
 .carousel-content {
-  width: 100%;
+  grid-template-columns: 100% 100% 100%;
+  width: 102%;
   height: 100%;
   white-space: nowrap;
   transition: transform 0.3s;
+  img {
+    display: grid;
+  }
 }
 
 .carousel-image {

@@ -15,16 +15,13 @@ export default function MenuButton ({
 
   return (
     // TODO: center this button
-    <div>
-      <button
-        onClick={clickHandler}
-        color="inherit"
-        id={id}
-        className={className}
-      >
-        <i className={icon} />
-      </button>
-    </div>
+    <button
+      onClick={clickHandler}
+      id={id}
+      className={className}
+    >
+      <i className={icon} />
+    </button>
   );
 };
 

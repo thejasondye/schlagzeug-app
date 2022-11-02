@@ -1,23 +1,34 @@
 #navbar {
-  // width: 97vw;
   height: auto;
   border-radius: 8px;
   position: static;
-  padding: 10px 15px;
+  padding: 15px 25px;
   background-color: var(--bg-secondary);
   color: var(--text-warning);
   grid: [start] "first second third" [end]
         / 1fr 1fr 1fr;
+  @media (min-width: 600px) {
+    grid: [start] "first second third" [end]
+          / 6fr 2fr 1fr;
+  }
 }
 
 #navbar-title {
-  font-size: 36px;
-  margin: auto;
   grid-area: second;
+  align-content: end;
+  div {
+    display: grid;
+    font-size: 36px;
+  }
 
   @media (min-width: 600px) {
     grid-area: first;
   }
+}
+
+#nav-menu-cntnr {
+  grid-area: first;
+  justify-content: start;
 }
 
 #nav-menu {
@@ -37,29 +48,31 @@
 }
 
 #nav-menu-btn {
-  display: grid;
   font-size: 20px;
   color: inherit;
   background-color: inherit;
   border: none;
+}
 
-  @media (min-width: 600px) {
-    display: none;
-  }
+#navbar-links{
+  grid-area: second;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: end;
+  align-items: center;
 }
 
 .navbar-link {
-  display: none;
-}
-@media (min-width: 600px) {
-  .navbar-link {
-    display: grid;
-  }
+  padding: 0 2px;
 }
 
 #user-avatar {
   height: 30px;
   width: 30px;
+}
+
+.user-menu-icon {
+  justify-items: end;
+  align-items: center;
 }
 
 #user-menu {
