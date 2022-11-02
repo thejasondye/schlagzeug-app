@@ -11,7 +11,7 @@ import NavBar from './components/NavBar';
 export default function App () {
 
   return (
-    <div id="page-cntnr">
+    <div id="main">
       <NavBar />
       <div id="outlet">
         <Outlet />

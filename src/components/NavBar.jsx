@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 import MenuButton from './MenuButton';
@@ -8,6 +8,44 @@ import Menu from './Menu';
 export default function NavBar () {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
+  const [navMenuOffset, setNavMenuOffset] = useState(null);
+  const [userMenuOffset, setUserMenuOffset] = useState(null);
+  const [isDesktop, setIsDesktop] = useState(
+    window.matchMedia("(min-width: 600px)").matches
+  );
+
+  const navMenu = useRef(null);
+  const userMenu = useRef(null);
+
+  const getRekt = el => el.getBoundingClientRect();
+
+  // okay, so this poses a problem
+  // if we don't conditionally run the code for the navMenu, then the useEffect()
+  // below will be broken for non-mobile sizes
+  // consider switching back to using CSS for the change if possible, or
+  // we'll just need to stick to a separate conditional useEffect for the navMenu
+
+  // it turns out, you can't conditionally render hooks because react counts how
+  // many there should be between renders
+
+
+  useEffect(() => {
+    window.matchMedia("(min-width: 600px)")
+      .addEventListener('change', e => setIsDesktop(e.matches));
+    const userRect = getRekt(userMenu.current);
+    setUserMenuOffset({
+      top: userRect.bottom + window.scrollX,
+      left: userRect.left + window.scrollY
+    });
+    if (!isDesktop) {
+      const navRect = getRekt(navMenu.current);
+      setNavMenuOffset({
+        top: navRect.bottom + window.scrollX,
+        left: navRect.right + window.scrollY
+      });
+    }
+  }, []);
+
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -21,7 +59,6 @@ export default function NavBar () {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-
   const pages = [
     {name: 'Home', link: '/'},
     {name: 'Music', link: 'music'},
@@ -37,53 +74,54 @@ export default function NavBar () {
 
   return (
 
-    <div id="navbar" className="card2 container center">
-      {/*
-        TODO: Make this title shift to center and resize for mobile
-          instead of rendering two titles
-      */}
+    <div id="navbar" className="card2">
       <div id="navbar-title">
-        Schlagzeug
+        <div>
+          Schlagzeug
+        </div>
       </div>
 
       {/* Needs to be viewable on mobile and tablet sizes only */}
 
-      <div id="nav-menu-cntnr" className="box">
-        <MenuButton
-          icons={icons}
-          handleOpenMenu={handleOpenNavMenu}
-          handleCloseMenu={handleCloseNavMenu}
-          id={"nav-menu-btn"}
-          className={null}
-          isOpen={Boolean(anchorElNav)}
-        />
+      {!isDesktop &&
+        <div id="nav-menu-cntnr">
+          <div ref={navMenu}>
+            <MenuButton
+              icons={['fa-solid fa-bars fa-lg', 'fa-solid fa-xmark fa-lg']}
+              handleOpenMenu={handleOpenNavMenu}
+              handleCloseMenu={handleCloseNavMenu}
+              id={"nav-menu-btn"}
+              className={null}
+              isOpen={Boolean(anchorElNav)}
+            />
+          </div>
 
-        {/*
-          Popup Menu container
-          -- move this to reusable component --
-        */}
-        <Menu
-          id="nav-menu"
-          className="card1"
-          anchorEl={anchorElNav}
-          anchorOrigin={{
-            horizontal: 'left',
-            vertical: 'bottom'
-          }}
-          transformOrigin={{
-            vertical: 'bottom',
-            horizontal: 'right',
-          }}
-          isOpen={Boolean(anchorElNav)}
-          onClose={handleCloseNavMenu}
-          items={pages}
-        />
+          {/*
+            Popup Menu container
+            -- move this to reusable component --
+          */}
+          <Menu
+            id="nav-menu"
+            anchorEl={anchorElNav}
+            anchorOrigin={navMenuOffset}
+            transformOrigin={{
+              vertical: 'bottom',
+              horizontal: 'right',
+            }}
+            isOpen={Boolean(anchorElNav)}
+            onClose={handleCloseNavMenu}
+            // sx={{
+            //   display: { xs: 'block', md: 'none' }
+            // }}
+            items={pages}
+          />
 
-      </div>
-
+        </div>
+      }
       {/* Button Nav Links */}
-      <div className="navbar-links">
-        {pages.map((page) => (
+      <div id="navbar-links">
+      {isDesktop &&
+        pages.map((page) => (
           <div
             className="navbar-link"
             key={page.name}
@@ -92,13 +130,16 @@ export default function NavBar () {
               {page.name}
             </Link>
           </div>
-        ))}
+        ))
+      }
       </div>
+
 
       {/* Viewable on all media sizes */}
       {/* User Settings menu */}
       <div
-        id="user-menu-bttn"
+        className="user-menu-icon"
+        ref={userMenu}
         onClick={anchorElUser ? handleCloseUserMenu : handleOpenUserMenu}
         style={{ padding: 0 }}
       >
@@ -109,20 +150,13 @@ export default function NavBar () {
         />
       </div>
       <Menu
-        // sx={{ mt: '45px' }}
         id="user-menu"
         className="card1"
         anchorEl={anchorElUser}
-        anchorOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
-        }}
+        anchorOrigin={userMenuOffset}
         onClick={handleCloseUserMenu}
         keepMounted
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
-        }}
+        transformOrigin={null}
         open={Boolean(anchorElUser)}
         onClose={handleCloseUserMenu}
         items={settings}

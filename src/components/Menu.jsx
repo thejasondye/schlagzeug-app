@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { Link } from 'react-router-dom';
@@ -8,15 +8,19 @@ import { Link } from 'react-router-dom';
 export default function Menu ({
   id, anchorEl, anchorOrigin, transformOrigin, isOpen, onClose, items
 }) {
+  const [menuOffset, setMenuOffset] = useState(null);
 
-  let display = anchorEl ? 'block' : 'none';
-  let divStyle = {
-    transformOrigin,
-    display
+  const display = anchorEl ? 'block' : 'none';
+  const divStyle = {
+    display,
+    ...anchorOrigin
   };
 
   return (
-    <div id={id} style={divStyle}>
+    <div
+      id={id}
+      style={divStyle}
+    >
       {items.map((item) => (
         <div
           className="nav-menu-item"
