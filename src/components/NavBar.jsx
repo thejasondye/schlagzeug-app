@@ -16,17 +16,9 @@ export default function NavBar () {
 
   const navMenu = useRef(null);
   const userMenu = useRef(null);
-
   const getRekt = el => el.getBoundingClientRect();
 
-  // okay, so this poses a problem
-  // if we don't conditionally run the code for the navMenu, then the useEffect()
-  // below will be broken for non-mobile sizes
-  // consider switching back to using CSS for the change if possible, or
-  // we'll just need to stick to a separate conditional useEffect for the navMenu
-
-  // it turns out, you can't conditionally render hooks because react counts how
-  // many there should be between renders
+  // make navbar classnames fluid to allow for varied styling based on viewport size
 
 
   useEffect(() => {
@@ -76,12 +68,8 @@ export default function NavBar () {
 
     <div id="navbar" className="card2">
       <div id="navbar-title">
-        <div>
-          Schlagzeug
-        </div>
+        Schlagzeug
       </div>
-
-      {/* Needs to be viewable on mobile and tablet sizes only */}
 
       {!isDesktop &&
         <div id="nav-menu-cntnr">
