@@ -16,20 +16,21 @@
 #navbar-title {
   grid-area: second;
   align-content: end;
+  justify-content: center;
   display: grid;
   font-size: 36px;
 
   @media (min-width: 600px) {
+    justify-content: start;
     grid-area: first;
   }
 }
 
-#nav-menu-cntnr {
-  grid-area: first;
-  justify-content: start;
+#navigation {
+  align-content: center;
 }
 
-#nav-menu {
+#mobile-nav-menu {
   position: absolute;
   height: auto;
   width: auto;
@@ -45,21 +46,21 @@
   }
 }
 
-#nav-menu-btn {
+#mobile-nav-menu-btn {
   font-size: 20px;
   color: inherit;
   background-color: inherit;
   border: none;
 }
 
-#navbar-links{
+#desktop-nav {
   grid-area: second;
   grid-template-columns: repeat(3, 1fr);
   justify-items: end;
   align-items: center;
 }
 
-.navbar-link {
+.desktop-nav-link {
   padding: 0 2px;
 }
 
