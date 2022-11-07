@@ -16,18 +16,7 @@ export default function NavBar () {
 
   const navMenu = useRef(null);
   const userMenu = useRef(null);
-
   const getRekt = el => el.getBoundingClientRect();
-
-  // okay, so this poses a problem
-  // if we don't conditionally run the code for the navMenu, then the useEffect()
-  // below will be broken for non-mobile sizes
-  // consider switching back to using CSS for the change if possible, or
-  // we'll just need to stick to a separate conditional useEffect for the navMenu
-
-  // it turns out, you can't conditionally render hooks because react counts how
-  // many there should be between renders
-
 
   useEffect(() => {
     window.matchMedia("(min-width: 600px)")
@@ -39,6 +28,8 @@ export default function NavBar () {
     });
     if (!isDesktop) {
       const navRect = getRekt(navMenu.current);
+      console.log('navRect :', navRect);
+      console.log('window.scrollX :', window.scrollX);
       setNavMenuOffset({
         top: navRect.bottom + window.scrollX,
         left: navRect.right + window.scrollY
@@ -46,7 +37,7 @@ export default function NavBar () {
     }
   }, []);
 
-
+  // DRY up this code -- extract menu element
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -72,95 +63,89 @@ export default function NavBar () {
   ];
   const icons = ['fa-solid fa-bars fa-lg', 'fa-solid fa-xmark fa-lg'];
 
+
   return (
 
     <div id="navbar" className="card2">
       <div id="navbar-title">
-        <div>
-          Schlagzeug
-        </div>
+        Schlagzeug
       </div>
 
-      {/* Needs to be viewable on mobile and tablet sizes only */}
+      <div id="navigation">
 
-      {!isDesktop &&
-        <div id="nav-menu-cntnr">
-          <div ref={navMenu}>
-            <MenuButton
-              icons={['fa-solid fa-bars fa-lg', 'fa-solid fa-xmark fa-lg']}
-              handleOpenMenu={handleOpenNavMenu}
-              handleCloseMenu={handleCloseNavMenu}
-              id={"nav-menu-btn"}
-              className={null}
-              isOpen={Boolean(anchorElNav)}
-            />
+        {/* Mobile Nav Links */}
+        {!isDesktop &&
+          <div id="mobile-nav">
+            <div ref={navMenu}>
+              <MenuButton
+                icons={['fa-solid fa-bars fa-lg', 'fa-solid fa-xmark fa-lg']}
+                handleOpenMenu={handleOpenNavMenu}
+                handleCloseMenu={handleCloseNavMenu}
+                id={"mobile-nav-menu-btn"}
+                className={null}
+                isOpen={Boolean(anchorElNav)}
+              />
+              <Menu
+                id="mobile-nav-menu"
+                anchorEl={anchorElNav}
+                anchorOrigin={navMenuOffset}
+                transformOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'right',
+                }}
+                isOpen={Boolean(anchorElNav)}
+                onClose={handleCloseNavMenu}
+                items={pages}
+              />
+            </div>
           </div>
+        }
 
-          {/*
-            Popup Menu container
-            -- move this to reusable component --
-          */}
-          <Menu
-            id="nav-menu"
-            anchorEl={anchorElNav}
-            anchorOrigin={navMenuOffset}
-            transformOrigin={{
-              vertical: 'bottom',
-              horizontal: 'right',
-            }}
-            isOpen={Boolean(anchorElNav)}
-            onClose={handleCloseNavMenu}
-            // sx={{
-            //   display: { xs: 'block', md: 'none' }
-            // }}
-            items={pages}
-          />
-
-        </div>
-      }
-      {/* Button Nav Links */}
-      <div id="navbar-links">
-      {isDesktop &&
-        pages.map((page) => (
-          <div
-            className="navbar-link"
-            key={page.name}
-          >
-            <Link to={page.link} style={{ textDecoration: 'none', color: '#FDCB0B' }}>
-              {page.name}
-            </Link>
+        {/* Desktop Nav Links */}
+        {isDesktop &&
+          <div id="desktop-nav">
+            {pages.map((page) => (
+            <div
+              className="desktop-nav-link"
+              key={page.name}
+            >
+              <Link to={page.link} style={{ textDecoration: 'none', color: '#FDCB0B' }}>
+                {page.name}
+              </Link>
+            </div>
+            ))}
           </div>
-        ))
-      }
+        }
       </div>
 
-
-      {/* Viewable on all media sizes */}
       {/* User Settings menu */}
-      <div
-        className="user-menu-icon"
-        ref={userMenu}
-        onClick={anchorElUser ? handleCloseUserMenu : handleOpenUserMenu}
-        style={{ padding: 0 }}
-      >
-        <img
-          id="user-avatar"
-          alt="Remy Sharp"
-          src="/lib/images/favicon.ico"
+      <div id="user-settings">
+        <div
+          className="user-menu-icon"
+          ref={userMenu}
+          onClick={anchorElUser ? handleCloseUserMenu : handleOpenUserMenu}
+          style={{ padding: 0 }}
+        >
+          <img
+            id="user-avatar"
+            alt="Remy Sharp"
+            src="/lib/images/favicon.ico"
+          />
+        </div>
+        <Menu
+          id="user-menu"
+          className="card1"
+          anchorEl={anchorElUser}
+          anchorOrigin={userMenuOffset}
+          onClick={handleCloseUserMenu}
+          keepMounted
+          transformOrigin={null}
+          open={Boolean(anchorElUser)}
+          onClose={handleCloseUserMenu}
+          items={settings}
         />
       </div>
-      <Menu
-        id="user-menu"
-        className="card1"
-        anchorEl={anchorElUser}
-        anchorOrigin={userMenuOffset}
-        onClick={handleCloseUserMenu}
-        keepMounted
-        transformOrigin={null}
-        open={Boolean(anchorElUser)}
-        onClose={handleCloseUserMenu}
-        items={settings}
-      />
+
     </div>
   );
 };
