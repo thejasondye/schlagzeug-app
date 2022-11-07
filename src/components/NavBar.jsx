@@ -28,8 +28,6 @@ export default function NavBar () {
     });
     if (!isDesktop) {
       const navRect = getRekt(navMenu.current);
-      console.log('navRect :', navRect);
-      console.log('window.scrollX :', window.scrollX);
       setNavMenuOffset({
         top: navRect.bottom + window.scrollX,
         left: navRect.right + window.scrollY
@@ -109,7 +107,7 @@ export default function NavBar () {
               className="desktop-nav-link"
               key={page.name}
             >
-              <Link to={page.link} style={{ textDecoration: 'none', color: '#FDCB0B' }}>
+              <Link to={page.link}>
                 {page.name}
               </Link>
             </div>
