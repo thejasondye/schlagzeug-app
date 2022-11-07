@@ -19,6 +19,7 @@ export default function Menu ({
   return (
     <div
       id={id}
+      className="card1"
       style={divStyle}
     >
       {items.map((item) => (
@@ -35,3 +36,13 @@ export default function Menu ({
     </div>
   );
 };
+
+Menu.propTypes = {
+  id: PropTypes.string,
+  anchorEl: PropTypes.object,
+  anchorOrigin: PropTypes.object,
+  tansformOrigin: PropTypes.object,
+  isOpen: PropTypes.bool,
+  onClose: PropTypes.func,
+  items: PropTypes.arrayOf(PropTypes.object)
+}

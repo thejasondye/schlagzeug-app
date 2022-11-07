@@ -18,7 +18,6 @@ export default function NavBar () {
   const userMenu = useRef(null);
   const getRekt = el => el.getBoundingClientRect();
 
-
   useEffect(() => {
     window.matchMedia("(min-width: 600px)")
       .addEventListener('change', e => setIsDesktop(e.matches));
@@ -29,6 +28,8 @@ export default function NavBar () {
     });
     if (!isDesktop) {
       const navRect = getRekt(navMenu.current);
+      console.log('navRect :', navRect);
+      console.log('window.scrollX :', window.scrollX);
       setNavMenuOffset({
         top: navRect.bottom + window.scrollX,
         left: navRect.right + window.scrollY
@@ -36,6 +37,7 @@ export default function NavBar () {
     }
   }, []);
 
+  // DRY up this code -- extract menu element
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -61,7 +63,7 @@ export default function NavBar () {
   ];
   const icons = ['fa-solid fa-bars fa-lg', 'fa-solid fa-xmark fa-lg'];
 
-  
+
   return (
 
     <div id="navbar" className="card2">
