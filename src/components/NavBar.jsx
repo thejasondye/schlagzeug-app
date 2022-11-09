@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import MenuButton from './MenuButton';
@@ -18,20 +18,51 @@ export default function NavBar () {
   const userMenu = useRef(null);
   const getRekt = el => el.getBoundingClientRect();
 
+
   useEffect(() => {
     window.matchMedia("(min-width: 600px)")
       .addEventListener('change', e => setIsDesktop(e.matches));
+
     const userRect = getRekt(userMenu.current);
     setUserMenuOffset({
       top: userRect.bottom + window.scrollX,
-      left: userRect.left + window.scrollY
+      right: window.innerWidth - (userRect.right + window.scrollY)
     });
     if (!isDesktop) {
       const navRect = getRekt(navMenu.current);
       setNavMenuOffset({
-        top: navRect.bottom + window.scrollX,
-        left: navRect.right + window.scrollY
+        top: navRect.bottom + window.scrollX + 12.5,
+        left: navRect.left + window.scrollY
       });
+    }
+  }, []);
+
+  useLayoutEffect(() => {
+    const desktopDetect = () => {
+      window.matchMedia("(min-width: 600px)")
+        .addEventListener('change', e => setIsDesktop(e.matches));
+    }
+    const updateMenuPos = () => {
+      const userRect = getRekt(userMenu.current);
+      setUserMenuOffset({
+        top: userRect.bottom + window.scrollX,
+        right: window.innerWidth - (userRect.right + window.scrollY)
+      });
+      if (!isDesktop) {
+        const navRect = getRekt(navMenu.current);
+        setNavMenuOffset({
+          top: navRect.bottom + window.scrollX,
+          left: navRect.left + window.scrollY
+        });
+      }
+    }
+
+    window.addEventListener('resize', updateMenuPos);
+    window.addEventListener('resize', desktopDetect);
+    updateMenuPos();
+    return () => {
+      window.removeEventListener('resize', updateMenuPos);
+      window.removeEventListener('resize', desktopDetect);
     }
   }, []);
 
@@ -73,29 +104,27 @@ export default function NavBar () {
 
         {/* Mobile Nav Links */}
         {!isDesktop &&
-          <div id="mobile-nav">
-            <div ref={navMenu}>
-              <MenuButton
-                icons={['fa-solid fa-bars fa-lg', 'fa-solid fa-xmark fa-lg']}
-                handleOpenMenu={handleOpenNavMenu}
-                handleCloseMenu={handleCloseNavMenu}
-                id={"mobile-nav-menu-btn"}
-                className={null}
-                isOpen={Boolean(anchorElNav)}
-              />
-              <Menu
-                id="mobile-nav-menu"
-                anchorEl={anchorElNav}
-                anchorOrigin={navMenuOffset}
-                transformOrigin={{
-                  vertical: 'bottom',
-                  horizontal: 'right',
-                }}
-                isOpen={Boolean(anchorElNav)}
-                onClose={handleCloseNavMenu}
-                items={pages}
-              />
-            </div>
+          <div id="mobile-nav" ref={navMenu}>
+            <MenuButton
+              icons={['fa-solid fa-bars fa-lg', 'fa-solid fa-xmark fa-lg']}
+              handleOpenMenu={handleOpenNavMenu}
+              handleCloseMenu={handleCloseNavMenu}
+              id={"mobile-nav-menu-btn"}
+              className={null}
+              isOpen={Boolean(anchorElNav)}
+            />
+            <Menu
+              id="mobile-nav-menu"
+              anchorEl={anchorElNav}
+              anchorOrigin={navMenuOffset}
+              transformOrigin={{
+                vertical: 'bottom',
+                horizontal: 'right',
+              }}
+              isOpen={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+              items={pages}
+            />
           </div>
         }
 

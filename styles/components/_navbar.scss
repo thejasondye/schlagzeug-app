@@ -1,5 +1,6 @@
 #navbar {
   height: auto;
+  margin: 6px;
   border-radius: 8px;
   position: static;
   padding: 15px 25px;
@@ -34,11 +35,11 @@
   position: absolute;
   height: auto;
   width: auto;
-  background-color: var(--text-primary);
+  background-color: lighten(#306678, 10%);
   padding: 10px 5px;
   z-index: 200;
 
-  div {
+  div a {
     color: var(--text-warning);
     text-decoration: none;
     font-size: 20px;
@@ -60,11 +61,12 @@
   align-items: center;
 }
 
-.desktop-nav-link {
+.desktop-nav-link a {
   padding: 0 2px;
   text-decoration: none;
   color: var(--text-warning);
 }
+
 
 #user-avatar {
   height: 30px;
@@ -80,11 +82,11 @@
   position: absolute;
   height: auto;
   width: auto;
-  background-color: var(--text-primary);
+  background-color: lighten(#306678, 10%);
   padding: 10px 5px;
   z-index: 201;
 
-  div {
+  div a {
     color: var(--text-warning);
     text-decoration: none;
     font-size: 20px;
