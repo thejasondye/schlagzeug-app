@@ -1,4 +1,27 @@
+@use 'sass:color';
+
+// why won't this import work?
+@mixin card($height: 1, $color: #000) {
+  @if $height == 1 {
+    box-shadow: 0px 1.5px 4px -1.5px $color;
+  }
+  @if $height == 2 {
+    box-shadow: 0px 2px 8px -2px $color;
+  }
+  @if $height == 3 {
+    box-shadow: 0px 2.5px 12px -3.5px $color;
+  }
+  @if $height == 4 {
+    box-shadow: 0px 2.5px 18px -3.5px $color;
+  }
+    border: 2px;
+    border-radius: 5px;
+}
+
+
+
 #navbar {
+  @include card(2, color.scale(#073E55, $lightness: -40%));
   height: auto;
   margin: 6px;
   border-radius: 8px;
@@ -32,6 +55,7 @@
 }
 
 #mobile-nav-menu {
+  @include card(3, color.scale(#306678, $lightness: -40%));
   position: absolute;
   height: auto;
   width: auto;
@@ -79,6 +103,7 @@
 }
 
 #user-menu {
+  @include card(2, color.scale(#073E55, $lightness: -40%));
   position: absolute;
   height: auto;
   width: auto;
