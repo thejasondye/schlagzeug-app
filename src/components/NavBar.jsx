@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import { Link } from 'react-router-dom';
+import usePosition from '../hooks/usePosition';
 
 import MenuButton from './MenuButton';
 import Menu from './Menu';
@@ -8,62 +9,30 @@ import Menu from './Menu';
 export default function NavBar () {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
-  const [navMenuOffset, setNavMenuOffset] = useState(null);
-  const [userMenuOffset, setUserMenuOffset] = useState(null);
   const [isDesktop, setIsDesktop] = useState(
     window.matchMedia("(min-width: 600px)").matches
   );
+  const userAvatarPhoto = null /* '/lib/images/favicon.ico' */;
 
-  const navMenu = useRef(null);
-  const userMenu = useRef(null);
-  const getRekt = el => el.getBoundingClientRect();
 
+  const [userMenuRef, userMenuOffset] = usePosition(['bottom', 'right', 'top', 'right']);
+  console.log('userMenuOffset :', userMenuOffset);
+
+  const [navMenuRef, navMenuOffset] = usePosition(['bottom', 'left', 'top', 'left']);
+  console.log('navMenuOffset :', navMenuOffset);
+
+  const matches = e => setIsDesktop(e.matches);
 
   useEffect(() => {
     window.matchMedia("(min-width: 600px)")
-      .addEventListener('change', e => setIsDesktop(e.matches));
-
-    const userRect = getRekt(userMenu.current);
-    setUserMenuOffset({
-      top: userRect.bottom + window.scrollX,
-      right: window.innerWidth - (userRect.right + window.scrollY)
-    });
-    if (!isDesktop) {
-      const navRect = getRekt(navMenu.current);
-      setNavMenuOffset({
-        top: navRect.bottom + window.scrollX + 12.5,
-        left: navRect.left + window.scrollY
-      });
-    }
+    .addEventListener('change', matches);
   }, []);
 
   useLayoutEffect(() => {
-    const desktopDetect = () => {
-      window.matchMedia("(min-width: 600px)")
-        .addEventListener('change', e => setIsDesktop(e.matches));
-    }
-    const updateMenuPos = () => {
-      const userRect = getRekt(userMenu.current);
-      setUserMenuOffset({
-        top: userRect.bottom + window.scrollX,
-        right: window.innerWidth - (userRect.right + window.scrollY)
-      });
-      if (!isDesktop) {
-        const navRect = getRekt(navMenu.current);
-        setNavMenuOffset({
-          top: navRect.bottom + window.scrollX,
-          left: navRect.left + window.scrollY
-        });
-      }
-    }
-
-    window.addEventListener('resize', updateMenuPos);
-    window.addEventListener('resize', desktopDetect);
-    updateMenuPos();
-    return () => {
-      window.removeEventListener('resize', updateMenuPos);
-      window.removeEventListener('resize', desktopDetect);
-    }
+    console.log('layout effect nav bar');
+    window.matchMedia("(min-width: 600px)")
+      .addEventListener('change', matches);
+    return window.matchMedia("(min-width: 600px)").removeEventListener('change', matches);
   }, []);
 
   // DRY up this code -- extract menu element
@@ -79,6 +48,7 @@ export default function NavBar () {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
   const pages = [
     {name: 'Home', link: '/'},
     {name: 'Music', link: 'music'},
@@ -95,16 +65,16 @@ export default function NavBar () {
 
   return (
 
-    <div id="navbar" className="card2">
+    <div id="navbar">
       <div id="navbar-title">
         Schlagzeug
       </div>
 
-      <div id="navigation">
+      <div id="navigation" ref={navMenuRef}>
 
         {/* Mobile Nav Links */}
-        {!isDesktop &&
-          <div id="mobile-nav" ref={navMenu}>
+        { !isDesktop &&
+          <div id="mobile-nav">
             <MenuButton
               icons={['fa-solid fa-bars fa-lg', 'fa-solid fa-xmark fa-lg']}
               handleOpenMenu={handleOpenNavMenu}
@@ -129,7 +99,7 @@ export default function NavBar () {
         }
 
         {/* Desktop Nav Links */}
-        {isDesktop &&
+        { isDesktop &&
           <div id="desktop-nav">
             {pages.map((page) => (
             <div
@@ -146,22 +116,26 @@ export default function NavBar () {
       </div>
 
       {/* User Settings menu */}
+
+      {/* Make img conditional (pass down) and add placeholder div for initials */}
       <div id="user-settings">
-        <div
-          className="user-menu-icon"
-          ref={userMenu}
-          onClick={anchorElUser ? handleCloseUserMenu : handleOpenUserMenu}
-          style={{ padding: 0 }}
-        >
-          <img
+
+          <div
             id="user-avatar"
+            className="user-menu-icon"
+            ref={userMenuRef}
+            onClick={anchorElUser ? handleCloseUserMenu : handleOpenUserMenu}
             alt="Remy Sharp"
-            src="/lib/images/favicon.ico"
-          />
-        </div>
+
+          >
+            { userAvatarPhoto &&
+              <img src={userAvatarPhoto} alt="User Name" /> ||
+              <div id="placeholder-photo">JD</div>
+            }
+
+          </div>
         <Menu
           id="user-menu"
-          className="card1"
           anchorEl={anchorElUser}
           anchorOrigin={userMenuOffset}
           onClick={handleCloseUserMenu}

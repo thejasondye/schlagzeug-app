@@ -1,6 +1,8 @@
 @use 'sass:color';
 
-// why won't this import work?
+// why won't the import work? would love to not have to define the mixin here ...
+
+
 @mixin card($height: 1, $color: #000) {
   @if $height == 1 {
     box-shadow: 0px 1.5px 4px -1.5px $color;
@@ -93,11 +95,18 @@
 
 
 #user-avatar {
+  border-radius: 50%;
+  overflow: hidden;
   height: 30px;
   width: 30px;
 }
 
-.user-menu-icon {
+#placeholder-photo {
+  background-color: lighten(#306678, 20%);
+  color: var(--text-primary);
+}
+
+#user-settings {
   justify-items: end;
   align-items: center;
 }

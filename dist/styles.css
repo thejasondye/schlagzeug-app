@@ -207,11 +207,18 @@ select {
 }
 
 #user-avatar {
+  border-radius: 50%;
+  overflow: hidden;
   height: 30px;
   width: 30px;
 }
 
-.user-menu-icon {
+#placeholder-photo {
+  background-color: #54a1ba;
+  color: var(--text-primary);
+}
+
+#user-settings {
   justify-items: end;
   align-items: center;
 }

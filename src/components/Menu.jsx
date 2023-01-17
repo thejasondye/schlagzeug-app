@@ -19,12 +19,11 @@ export default function Menu ({
   return (
     <div
       id={id}
-      className="card1"
       style={divStyle}
     >
       {items.map((item) => (
         <div
-          className="nav-menu-item"
+          className="nav-menu-item" // not modular because of this
           key={item.name}
           onClick={onClose}
         >
