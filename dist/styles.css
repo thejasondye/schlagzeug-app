@@ -132,7 +132,8 @@ select {
 }
 
 #navbar {
-  box-shadow: 0px 2px 8px -2px #042533;
+  box-shadow: 0px 2px 8px -2px #000;
+  background-color: #042533;
   border: 2px;
   border-radius: 5px;
   height: auto;
@@ -169,7 +170,8 @@ select {
 }
 
 #mobile-nav-menu {
-  box-shadow: 0px 2.5px 12px -3.5px #1d3d48;
+  box-shadow: 0px 2.5px 12px -3.5px #000;
+  background-color: #1d3d48;
   border: 2px;
   border-radius: 5px;
   position: absolute;
@@ -224,7 +226,8 @@ select {
 }
 
 #user-menu {
-  box-shadow: 0px 2px 8px -2px #042533;
+  box-shadow: 0px 2px 8px -2px #000;
+  background-color: #042533;
   border: 2px;
   border-radius: 5px;
   position: absolute;
@@ -362,6 +365,10 @@ select {
 }
 
 .music-list-item {
+  box-shadow: 0px 1.5px 4px -1.5px #000;
+  background-color: #fff;
+  border: 2px;
+  border-radius: 5px;
   width: 250px;
   padding-bottom: 8px;
   cursor: pointer;
