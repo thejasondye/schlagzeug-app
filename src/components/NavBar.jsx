@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import { Link } from 'react-router-dom';
-import usePosition from '../hooks/usePosition';
+import useAnchor from '../hooks/useAnchor';
 
 import MenuButton from './MenuButton';
 import Menu from './Menu';
@@ -12,13 +12,13 @@ export default function NavBar () {
   const [isDesktop, setIsDesktop] = useState(
     window.matchMedia("(min-width: 600px)").matches
   );
-  const userAvatarPhoto = null /* '/lib/images/favicon.ico' */;
+  const userAvatarPhoto = null;
 
-
-  const [userMenuRef, userMenuOffset] = usePosition(['bottom', 'right', 'top', 'right']);
+  console.log('innerWidth: ', window.innerWidth);
+  const [userMenuRef, userMenuOffset] = useAnchor('bottom', 'right', 'top', 'right');
   console.log('userMenuOffset :', userMenuOffset);
 
-  const [navMenuRef, navMenuOffset] = usePosition(['bottom', 'left', 'top', 'left']);
+  const [navMenuRef, navMenuOffset] = useAnchor('bottom', 'left', 'top', 'left');
   console.log('navMenuOffset :', navMenuOffset);
 
   const matches = e => setIsDesktop(e.matches);
@@ -118,13 +118,13 @@ export default function NavBar () {
       {/* User Settings menu */}
 
       {/* Make img conditional (pass down) and add placeholder div for initials */}
-      <div id="user-settings">
+      <div id="user-settings" ref={userMenuRef}>
 
           <div
             id="user-avatar"
             className="user-menu-icon"
-            ref={userMenuRef}
             onClick={anchorElUser ? handleCloseUserMenu : handleOpenUserMenu}
+            onBlur={handleCloseUserMenu}
             alt="Remy Sharp"
 
           >
@@ -139,6 +139,7 @@ export default function NavBar () {
           anchorEl={anchorElUser}
           anchorOrigin={userMenuOffset}
           onClick={handleCloseUserMenu}
+          onBlur={handleCloseUserMenu}
           keepMounted
           transformOrigin={null}
           open={Boolean(anchorElUser)}
